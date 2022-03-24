@@ -7,3 +7,7 @@ const route = (event) => { //function to handle link default behavior
 }
 
 window.route = route; //Global access to route function
+
+const routes = {
+    404: ''
+}
