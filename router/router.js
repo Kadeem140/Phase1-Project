@@ -7,7 +7,6 @@ const route = (event) => { //function to handle link default behavior
     handleLocation(); // routes within our app.
 }
 
-window.route = route; //Global access to route function
 
 const routes = {
     404: "/pages/404.html",
@@ -20,10 +19,12 @@ const handleLocation = async () => {
     const path = window.location.pathname; 
     const route = routes[path] || routes[404]; // find our desired route or default to 404 error
     const html = await fetch(route).then((data) => data.text()); //Load in Html from our route, turn data to text.
+    document.getElementById("main-page").innerHTML = html;
 }
 
+
 window.onpopstate = handleLocation; //handles cases where users click forward and back bottom
-window.route = route;
+window.route = route; //Global access to route function
 
 handleLocation(); // handles location on page load to handle correct pg user lands on.
 
