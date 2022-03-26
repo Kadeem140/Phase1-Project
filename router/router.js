@@ -10,9 +10,9 @@ const route = (event) => { //function to handle link default behavior
 
 const routes = {
     404: "/pages/404.html",
-    "/": "/frontend/frontend/",
-    "/about": "/pages/about.html",
-    "/pokemon": "/pages/pokemon.html"
+    "/": "index.html",
+    "/about": "frontend/frontend/pages/about.html",
+    "/pokemon": "frontend/frontend/pages/pokemon.html"
 };
 
 const handleLocation = async () => {
