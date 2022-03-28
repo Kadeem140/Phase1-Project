@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    fetchApi()
     //once the content loads i want the event listeners to add to their respective elements
     document.querySelector('#seePokemon')
         .addEventListener("click", console.log("Hooked up and ready to go G!"))
@@ -7,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //fetch functions
 function fetchApi(){
-    return fetch(' https://pokeapi.co/api/v2/pokemon')
+    return fetch(' https://pokeapi.co/api/v2/pokemon/?limit=151')
     .then(res => res.json())
-    .then(pokemon => console.log(pokemon))
+    .then(pokemon => console.log(pokemon.results))
 }
