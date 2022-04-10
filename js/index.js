@@ -1,9 +1,28 @@
+//global constants
+// const configAPI 
+let dlContainer;
+let ddContainer;
+let dataInput;
+let dataList;
+let dropDown;
+
+
+
+
+
+
+//Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
     fetchApi()
     fetchPokemon("squirtle") 
     //once the content loads i want the event listeners to add to their respective elements
     document.querySelector('#seePokemon')
         .addEventListener("click", console.log("Hooked up and ready to go G!"))
+    ddContainer = document.querySelector("#dropdown-container")
+    dlContainer = document.querySelector('#datalist-container')
+    dataList = document.querySelector("#names")
+    dataInput = document.querySelector("input.drop-down")
+    dropDown = document.querySelector("#narrowedDD")
 })
 
 
@@ -44,3 +63,44 @@ function fetchPokemon(name){
     })
 }
 
+// invoked on DOM loaded, search by exercise name click & on dropdown selected
+// build & unhide datalist, takes 2 args: exercises from API & key: Name, bp or target
+//  set conditional so DL changes with click compares value of event (if click event) to key
+//  iterates through API objects to show exercise names or narrowed list of exercise names*/
+function buildPokemonDL(pokemon, key){
+  let value;
+  event ? value = event.target.value : null;
+  dlContainer.innerHTML = ""
+  dataList.innerHTML = ""
+  dlContainer.className = "drop-down"
+  dataInput.value = ""
+  dataList.id="names"
+  dlContainer.append(dataInput, dataList)
+  addOption(dataList, 'Select', '')
+  //if no key... key is name
+  if(key === 'name'){
+    dropDown.innerHTML = ""
+    dropDown.className = "hide"
+    exercises.forEach(exercise => {
+      const {name} = exercise
+      addOption(dataList, name, name)
+    })
+  }else{
+    exercises.forEach(exercise => {
+      const {name} = exercise
+      if(exercise[key] === value){
+        addOption(dataList, name, name)
+      } 
+    })
+  } 
+}
+
+
+function addOption(dataList, innertext, value){
+    let option = document.createElement("option")
+    option.innerText = innertext
+    option.value = value
+    dataList.append(option)
+}
+
+addOption(dropDown, "fire", 'type')
