@@ -108,10 +108,11 @@ function buildPokemonDL(pokemon, key){
 
 
 function typeSearch(element){
-    if(element.value.name == "type"){
-        ddContainer.hidden = false
-    }
-    else if (element.value.name == "close"){
-        ddContainer.hidden = true
-    }
+    console.log(element, "element object")
+    // if(element.value === "type"){
+    //     ddContainer.hidden = false
+    // }
+    // else if (element.target.value.name === "close"){
+    //     ddContainer.hidden = true
+    // }
 }
