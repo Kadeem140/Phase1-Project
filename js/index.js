@@ -13,16 +13,17 @@ let dropDown;
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
-    fetchApi()
-    fetchPokemon("squirtle") 
+
     //once the content loads i want the event listeners to add to their respective elements
-    document.querySelector('#seePokemon')
-        .addEventListener("click", console.log("Hooked up and ready to go G!"))
+    // document.querySelector('#seePokemon')
+        // .addEventListener("click", console.log("Hooked up and ready to go G!"))
     ddContainer = document.querySelector("#dropdown-container")
     dlContainer = document.querySelector('#datalist-container')
     dataList = document.querySelector("#names")
     dataInput = document.querySelector("input.drop-down")
     dropDown = document.querySelector("#narrowedDD")
+    fetchApi()
+    fetchPokemon("squirtle") 
 })
 
 
@@ -96,11 +97,16 @@ function buildPokemonDL(pokemon, key){
 }
 
 
-function addOption(dataList, innertext, value){
-    let option = document.createElement("option")
-    option.innerText = innertext
-    option.value = value
-    dataList.append(option)
-}
+// function addOption(dataList, innertext, value){
+//     let option = document.createElement("option")
+//         console.log(option, "Logged!")
+//     option.innerText = innertext
+//     option.value = value
+//     dataList.append(option)
+// }
+// addOption(ddContainer, "fire", 'type')
 
-addOption(dropDown, "fire", 'type')
+
+function typeSearch(){
+    ddContainer.hidden = false
+}
