@@ -107,6 +107,11 @@ function buildPokemonDL(pokemon, key){
 // addOption(ddContainer, "fire", 'type')
 
 
-function typeSearch(){
-    ddContainer.hidden = false
+function typeSearch(element){
+    if(element.value.name == "type"){
+        ddContainer.hidden = false
+    }
+    else if (element.value.name == "close"){
+        ddContainer.hidden = true
+    }
 }
