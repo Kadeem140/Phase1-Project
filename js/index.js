@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     dataList = document.querySelector("#names")
     dataInput = document.querySelector("input.names")
     dropDown = document.querySelector("#narrowedDD")
-
     searchForm = document.querySelector('form.pure-form')
     //event listener to capture dataInput 
     searchForm.addEventListener('submit', function (e) {
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchPokemon("charmander", "fetch Pokemon") 
 })
 
-
 //fetch functions
 function fetchApi(){
     return fetch(' https://pokeapi.co/api/v2/pokemon/?limit=151')
@@ -49,9 +47,7 @@ function fetchApi(){
             // maps e.name to be options to append into (dropDown)
         })
     })
-  
 }
-
 function fetchPokemon(name){
     return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
     .then(res => res.json())
@@ -64,15 +60,14 @@ function fetchPokemon(name){
                 console.log(e.ability.name, "Non-hidden")
             }
         })
-         //height
+        //height
          console.log(pokemon.height, "height")
         //weight
         console.log(pokemon.weight, "weight")
         //img
         //sprites.front_default = URL (MAKE IMG element)
 
-        //types (Array) map over and 
-    
+        //type
         if(pokemon.types.length > 1){
             const types = pokemon.types
             types.map(e => {
@@ -83,7 +78,24 @@ function fetchPokemon(name){
         //Check the length, if length > 1 map over it and render type.name
         //moves (Array) map over and render first 4 moves
         
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
 
+       function fourMoves(){
+           for (i = 0; i < 4; i++){
+            console.log(pokemon.moves[getRandomInt(100)].move.name, "moves")
+        }
+        
+    }
+    const newBtn = document.createElement('button') 
+    newBtn.innerHTML = "New Moves"
+    searchForm.append(newBtn)
+    
+
+
+
+        //stats
         const pokemonStats = pokemon.stats;
         pokemonStats.map(e => {
             //Make card elements here
