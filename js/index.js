@@ -20,10 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
     ddContainer = document.querySelector("#dropdown-container")
     dlContainer = document.querySelector('#datalist-container')
     dataList = document.querySelector("#names")
-    dataInput = document.querySelector("input.drop-down")
+    dataInput = document.querySelector("input.names")
     dropDown = document.querySelector("#narrowedDD")
+
+    searchForm = document.querySelector('form.pure-form')
+    //event listener to capture dataInput 
+    searchForm.addEventListener('submit', function (e) {
+        //prevent the normal submission of the form
+        e.preventDefault();
+        console.log(dataInput.value);  
+        fetchPokemon(dataInput.value)
+        //API call by name(input.value), if successful render a card to be appended to the DOM
+        //if Unsuccessful Alert(That is not a valid pokemon name)   
+    });
     fetchApi()
-    fetchPokemon("squirtle") 
+    fetchPokemon("charmander", "fetch Pokemon") 
 })
 
 
@@ -32,12 +43,11 @@ function fetchApi(){
     return fetch(' https://pokeapi.co/api/v2/pokemon/?limit=151')
     .then(res => res.json())
     .then(pokemon => {
-        console.log(pokemon.results)
         const pokeArray = pokemon.results
         pokeArray.map(e => {
             console.log(e.name, 'Map Array')
+            // maps e.name to be options to append into (dropDown)
         })
-        console.log(pokeArray, "Ok")
     })
   
 }
@@ -49,17 +59,35 @@ function fetchPokemon(name){
         
         console.log(pokemon, 'Pokemon here')
         //abilities
-        //height
+        pokemon.abilities.map(e => {
+            if(!e.is_hidden){
+                console.log(e.ability.name, "Non-hidden")
+            }
+        })
+         //height
+         console.log(pokemon.height, "height")
         //weight
+        console.log(pokemon.weight, "weight")
+        //img
         //sprites.front_default = URL (MAKE IMG element)
-        //types (Array) map over and render type.name
+
+        //types (Array) map over and 
+    
+        if(pokemon.types.length > 1){
+            const types = pokemon.types
+            types.map(e => {
+                console.log(e.type.name, "abilities")
+            })
+        }
+        else { console.log(pokemon.types[0].type.name)}
+        //Check the length, if length > 1 map over it and render type.name
         //moves (Array) map over and render first 4 moves
         
 
         const pokemonStats = pokemon.stats;
         pokemonStats.map(e => {
             //Make card elements here
-            console.log(e.stat.name + " " + e.base_stat, 'stat')
+            console.log(e.stat.name + " = " + e.base_stat)
         })
     })
 }
@@ -107,8 +135,8 @@ function buildPokemonDL(pokemon, key){
 // addOption(ddContainer, "fire", 'type')
 
 
-function typeSearch(){
-    console.log(event.target.value, "event object")
+function toggleBtnSearch(){
+    // console.log(event.target.value, "event object")
 
     if(event.target.value === "type"){
         ddContainer.hidden = false
@@ -116,4 +144,17 @@ function typeSearch(){
     else if (event.target.value === "close"){
         ddContainer.hidden = true
     }
+
+    
+    if(event.target.value === "name"){
+        dlContainer.hidden = false
+    }
+    else if (event.target.value === "close2"){
+        dlContainer.hidden = true
+    }
+}
+
+function btnSubmit(){
+    console.log(event, 'event object')
+    event.preventDefault();
 }
