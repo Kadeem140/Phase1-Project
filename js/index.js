@@ -55,59 +55,60 @@ function fetchPokemon(name){
         
         console.log(pokemon, 'Pokemon here')
         //abilities
-        pokemon.abilities.map(e => {
-            if(!e.is_hidden){
-                console.log(e.ability.name, "Non-hidden")
+        if (name){
+            pokemon.abilities.map(e => {
+                if(!e.is_hidden){
+                    console.log(e.ability.name, "Non-hidden")
+                }
+            })
+            //types
+            if(pokemon.types.length > 1){
+                const types = pokemon.types
+                types.map(e => { console.log(e.type.name, "abilities") })
             }
-        })
+            else { console.log(pokemon.types[0].type.name)}
+        }
+        else { alert("Please Enter a Pokemon name to get New Moves!")}
         //height
          console.log(pokemon.height, "height")
         //weight
         console.log(pokemon.weight, "weight")
         //img
         //sprites.front_default = URL (MAKE IMG element)
-
-        //type
-        if(pokemon.types.length > 1){
-            const types = pokemon.types
-            types.map(e => {
-                console.log(e.type.name, "abilities")
-            })
-        }
-        else { console.log(pokemon.types[0].type.name)}
+        
         //Check the length, if length > 1 map over it and render type.name
         //moves (Array) map over and render first 4 moves
         
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
           }
-
+        //   moves
        function fourMoves(){
            for (i = 0; i < 4; i++){
             console.log(pokemon.moves[getRandomInt(100)].move.name, "moves")
         }
-        
     }
-    const newBtn = document.createElement('button') 
-    newBtn.innerHTML = "New Moves"
-    searchForm.append(newBtn)
-    
-
-
-
         //stats
-        const pokemonStats = pokemon.stats;
-        pokemonStats.map(e => {
-            //Make card elements here
-            console.log(e.stat.name + " = " + e.base_stat)
-        })
+        if(name){    
+            const pokemonStats = pokemon.stats;
+            pokemonStats.map(e => {
+                //Make card elements here
+                console.log(e.stat.name + " = " + e.base_stat)
+            })
+        }
+        if(name){
+            fourMoves()
+        }        
+            const newBtn = document.createElement('button') 
+            newBtn.innerHTML = "New Moves"
+            searchForm.append(newBtn)
+        
     })
+    
 }
 
-// invoked on DOM loaded, search by exercise name click & on dropdown selected
-// build & unhide datalist, takes 2 args: exercises from API & key: Name, bp or target
-//  set conditional so DL changes with click compares value of event (if click event) to key
-//  iterates through API objects to show exercise names or narrowed list of exercise names*/
+
+
 function buildPokemonDL(pokemon, key){
   let value;
   event ? value = event.target.value : null;
@@ -137,16 +138,6 @@ function buildPokemonDL(pokemon, key){
 }
 
 
-// function addOption(dataList, innertext, value){
-//     let option = document.createElement("option")
-//         console.log(option, "Logged!")
-//     option.innerText = innertext
-//     option.value = value
-//     dataList.append(option)
-// }
-// addOption(ddContainer, "fire", 'type')
-
-
 function toggleBtnSearch(){
     // console.log(event.target.value, "event object")
 
@@ -169,4 +160,50 @@ function toggleBtnSearch(){
 function btnSubmit(){
     console.log(event, 'event object')
     event.preventDefault();
+}
+const data = { 
+    "abilities": " K",
+    "types": " A",
+    "height": " D",
+    "weight": " E",
+    "img": "E " ,
+    "moves":" M",
+    "stats": " Y"
+}
+/*POST data from user's form on submit to db.json */
+function postPokemonData(data){
+    return fetch(`http://localhost:5500/pokedb.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(data)
+    })
+    .then(response => response.json)
+    .then(data => {
+        console.log("Success:", data)
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
+  postPokemonData(data)
+
+  function handleForm(e){ // Change for Pokemon
+
+    // e.preventDefault()
+    const exerciseObj = {
+      exercise: document.querySelector('#nameInput').innerText,
+      bodyPart: document.querySelector('#bpInput').innerText, 
+      target: document.querySelector('#targetInput').innerText, 
+      equipment: document.querySelector('#equipInput').innerText,
+      goals:{
+        dis: document.querySelector('#goal-dis').value,
+        dur: document.querySelector('#goal-dur').value, 
+        reps: document.querySelector('#goal-reps').value,
+        weight: document.querySelector('#goal-weight').value, 
+        other: document.querySelector('#goal-oth').value, 
+        },
+    }
 }
