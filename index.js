@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dropDown = document.querySelector("#narrowedDD")
     searchForm = document.querySelector('form.pure-form')
     teamOneSection = document.querySelector('#team-1')
+    pokemonOptions = document.querySelector(".pokemon-options")
     //event listener to capture dataInput 
     searchForm.addEventListener('submit', function (e) {
         //prevent the normal submission of the form
@@ -49,53 +50,66 @@ function fetchApi(){
         })
     })
 }
+
+//Fetch Function for Team 1
 function fetchPokemon(name){
     const lowerName = name.toLowerCase()
+    const teamMember = {
+        "id": " ",
+        "abilities": "",
+        "types": " ",
+        "height": " ",
+        "weight": " ",
+        "img": " ",
+        "moves": " ",
+        "stats": " ",
+        "pokedb.jsonId": " "
+    }
     return fetch(`https://pokeapi.co/api/v2/pokemon/${lowerName}`)
     .then(res => res.json())
     .then(pokemon => {
-        
-        console.log(pokemon, 'Pokemon here')
+         //img
+        const image = document.createElement('img')
+                image.src = pokemon.sprites.front_default
+                pokemonOptions.append(image)
+                
         //abilities
         if (name){
             pokemon.abilities.map(e => {
+               
                 if(!e.is_hidden){
                    const ability1 = document.createElement('p')
                    ability1.innerHTML = e.ability.name
                     // e.ability.name, "Non-hidden"
-                    teamOneSection.append(ability1)
+                    pokemonOptions.append(ability1)
                 }
             })
+
             //types
             if(pokemon.types.length > 1){
                 const types = pokemon.types
                 types.map(e => { 
                     let types = document.createElement('p')
                     types.innerHTML = e.type.name
-                    teamOneSection.append(types)
+                    pokemonOptions.append(types)
                  })
             }
             else { 
                 let type = document.createElement('p')
                     type.innerHTML = pokemon.types[0].type.name
-                    teamOneSection.append(type)
+                    pokemonOptions.append(type)
                 }
         }
         else { alert("Please Enter a Pokemon name to get New Moves!")}
         //height
          const height = document.createElement('p')
                     height.innerHTML = pokemon.height
-                    teamOneSection.append(height)
+                    pokemonOptions.append(height)
+        console.log("height", height)
         //weight
         const weight = document.createElement('p')
                     weight.innerHTML = pokemon.weight
-                    teamOneSection.append(weight)
-        //img
-        //sprites.front_default = URL (MAKE IMG element)
-        const image = document.createElement('img')
-                image.src = pokemon.sprites.front_default
-                teamOneSection.append(image)
-        
+                    pokemonOptions.append(weight)
         //Check the length, if length > 1 map over it and render type.name
         //moves (Array) map over and render first 4 moves
         
@@ -116,6 +130,7 @@ function fetchPokemon(name){
                 console.log(e.stat.name + " = " + e.base_stat)
             })
         }
+        //moves
         if(name){
             fourMoves()
         }        
@@ -128,7 +143,7 @@ function fetchPokemon(name){
 }
 
 
-
+//I may not need this Function, currently not hooked up to anything...
 function buildPokemonDL(pokemon, key){
   let value;
   event ? value = event.target.value : null;
