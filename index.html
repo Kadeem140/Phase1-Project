@@ -57,7 +57,7 @@
         </div>
         <div id="datalist-container"  class="hide" hidden = true>
             <form class = "pure-form">
-               Enter Name: <input type ="input" onsubmit="btnSubmit()" class='names' placeholder="Input a Pokemon`s name" />
+               Enter Name: <input type ="input" class='names' placeholder="Input a Pokemon`s name" />
                 <button type = "submit">Submit!</button>
                    
                 <button value = "close2" onClick= toggleBtnSearch() > X </button>
@@ -66,15 +66,21 @@
     </div>
 
     <div class="pokemon-options">
-        <section id="team-1">
+        <section id="team-1" hidden = "true"> 
             <!-- <datalist id="names"></datalist>  -->
+            <p>Test for Team 1</p>
             <!-- //API call that renders all pokemon needed data to a card? -->
         </section>
-
-        <section id="team-2">
+        <button id="team-1-btn" onclick= revealTeam()> Reveal team 1 </button>
+        <button onclick= hideTeam()>X</button>
+        
+        <section id="team-2" hidden = "true">
             <!-- <datalist id="names"></datalist>  -->
+            <p>Test for Team 2</p>
             <!-- //API call that renders all pokemon needed data to a card? -->
         </section>
+        <button id="team-2-btn" onclick= revealTeamTwo()> Reveal team 2 </button>
+        <button onclick= hideTeamTwo()>X</button>
     </div>
     
     <script src="index.js" ></script>
