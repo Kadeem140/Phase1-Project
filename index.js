@@ -9,6 +9,7 @@ let dropDown;
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
+    event.preventDefault();
     //once the content loads i want the event listeners to add to their respective element.
     ddContainer = document.querySelector("#dropdown-container")
     dlContainer = document.querySelector('#datalist-container')
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     teamOneSection = document.querySelector('#team-1')
     teamTwoSection = document.querySelector('#team-2')
     pokemonOptions = document.querySelector(".pokemon-options")
+    // postbtn = document.querySelector('.add-team')
     //event listener to capture dataInput 
     searchForm.addEventListener('submit', function (e) {
         //prevent the normal submission of the form
@@ -32,8 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     fetchApi()
     //initial render, testing... it works
-    fetchPokemon("charmander") 
+    
 })
+fetchPokemon("charmander") 
 //button reveals for Teams
 function revealTeam(){
     if (teamOneSection.hidden == true){
@@ -174,19 +177,24 @@ function fetchPokemon(name){
             })
             pokemonOptions.append(newBtn)     
             //Add functionality to this button being created for each pokemon  
+            const postbtn = document.createElement('button')
+            postbtn.innerHTML = "Add to your team"
+            //Fix this line
+            postbtn.addEventListener('click', function (e){
+                console.log("Event listener fired!")
+                e.preventDefault()
+                postPokemonData(teamMember, e)
+                
+            })
+            pokemonOptions.append(postbtn)
         }      
-        
-        const postbtn = document.createElement('button')
-        postbtn.innerHTML = "Add to your team"
-        //Fix this line
-        postbtn.addEventListener('click', postPokemonData(teamMember))
-        pokemonOptions.append(postbtn)
     })
+        
 }
-function postPokemonData(teamMember){
-    event.preventDefault()
-    console.log('POST DATA TM HERE',teamMember)
-    return fetch(`http://localhost:3000/pokedb.json/pokemon/pokemon`, {
+function postPokemonData(teamMember,event){
+    event.preventDefault();
+    console.log('POST DATA TM HERE',teamMember, event)
+    fetch(`http://localhost:3000/pokedb.json/pokemon/pokemon`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
