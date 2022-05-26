@@ -68,43 +68,47 @@ function fetchApi(){
     })
 }
 
-//Fetch Function for Team 1
+//TeamMemer to be sent to the pokedb, global scope
+let i = 0
+let teamMember = {
+"id": i++,
+"abilities": "",
+"types": " ",
+"height": " ",
+"weight": " ",
+"img": " ",
+"moves": " ",
+"stats": " ",
+"pokedb.jsonId": i++
+}
+
+/*POST data from user's form on submit to db.json */
+
+
+
 function fetchPokemon(name){
     const lowerName = name.toLowerCase()
-    let i = 0
-        const teamMember = {
-        "id": i++,
-        "abilities": "",
-        "types": " ",
-        "height": " ",
-        "weight": " ",
-        "img": " ",
-        "moves": " ",
-        "stats": " ",
-        "pokedb.jsonId": " "
-    }
     return fetch(`https://pokeapi.co/api/v2/pokemon/${lowerName}`)
     .then(res => res.json())
     .then(pokemon => {
          //img
         const image = document.createElement('img')
-                image.src = pokemon.sprites.front_default
-                pokemonOptions.append(image) 
-                 //populates teamMember object to be posted to the database.
-                 teamMember.img = image.src       
+            image.src = pokemon.sprites.front_default
+            pokemonOptions.append(image) 
+            //populates teamMember object to be posted to the database.
+            teamMember.img = image.src       
         //abilities
         if (name){
             pokemon.abilities.map(e => {
                 if(!e.is_hidden){
-                   const ability1 = document.createElement('p')
-                   ability1.innerHTML = e.ability.name
+                    const ability1 = document.createElement('p')
+                    ability1.innerHTML = e.ability.name
                     pokemonOptions.append(ability1)
                     teamMember.abilities.value = ability1 
-                     //populates teamMember object to be posted to the database.
+                    //populates teamMember object to be posted to the database.
                     teamMember.abilities = ability1.innerHTML  
                 }
             })
-            console.log(teamMember, "teamMember")
         //types
         if(pokemon.types.length > 1){
             const types = pokemon.types
@@ -114,44 +118,29 @@ function fetchPokemon(name){
                 pokemonOptions.append(types)
                 //populates teamMember object to be posted to the database.
                 teamMember.types = types.innerHTML
-             })
+            })
         }   
         else { 
             let type = document.createElement('p')
-                 type.innerHTML = pokemon.types[0].type.name
+                type.innerHTML = pokemon.types[0].type.name
                 pokemonOptions.append(type)
-                 //populates teamMember object to be posted to the database.
-                 teamMember.types = type.innerHTML
+                //populates teamMember object to be posted to the database.
+                teamMember.types = type.innerHTML
             }
         }
         else { alert("Please Enter a Pokemon name to get New Moves!")}
         //height
         const height = document.createElement('p')
-                height.innerHTML = pokemon.height
-                pokemonOptions.append(height)
-                //populates teamMember object to be posted to the database.
-                teamMember.height = height.innerHTML
-        console.log("height", height)
+              height.innerHTML = pokemon.height
+              pokemonOptions.append(height)
+              //populates teamMember object to be posted to the database.
+              teamMember.height = height.innerHTML
         //weight
         const weight = document.createElement('p')
-                weight.innerHTML = pokemon.weight
-                pokemonOptions.append(weight)
-                //populates teamMember object to be posted to the database.
-                teamMember.weight = weight.innerHTML
-
-        //Check the length, if length > 1 map over it and render type.name
-        //moves (Array) map over and render first 4 moves
-        
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-          }
-        //  moves
-       function fourMoves(){
-           for (i = 0; i < 4; i++){
-            pokemonOptions.append(pokemon.moves[getRandomInt(100)].move.name + "  ")
-            teamMember.moves = pokemon.moves[getRandomInt(100)].move.name + "  "
-           }
-        }
+              weight.innerHTML = pokemon.weight
+              pokemonOptions.append(weight)
+              //populates teamMember object to be posted to the database.
+              teamMember.weight = weight.innerHTML
         //stats
         if(name){    
             const pokemonStats = pokemon.stats;
@@ -162,14 +151,59 @@ function fetchPokemon(name){
             })
         }
         //moves
+           //Check the length, if length > 1 map over it and render type.name
+        //moves (Array) map over and render first 4 moves
+        
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+        //  moves
+       function fourMoves(){
+           for (i = 0; i < 4; i++){
+            pokemonOptions.append(pokemon.moves[getRandomInt(100)].move.name + "  ")
+           }
+        }
         if(name){
             fourMoves()
-        }        
             const newBtn = document.createElement('button') 
             newBtn.innerHTML = "New Moves"
-            searchForm.append(newBtn)       
+            newBtn.addEventListener("click", function(){
+                // pokemonOptions.append(pokemon.moves[getRandomInt(100)].move.name + "  ")
+                teamMember.moves = pokemon.moves[getRandomInt(100)].move.name + "  "
+                console.log("On Click is hooked up now.", teamMember)
+            })
+            pokemonOptions.append(newBtn)     
+            //Add functionality to this button being created for each pokemon  
+        }      
+        
+        const postbtn = document.createElement('button')
+        postbtn.innerHTML = "Add to your team"
+        //Fix this line
+        postbtn.addEventListener('click', postPokemonData(teamMember))
+        pokemonOptions.append(postbtn)
     })
 }
+function postPokemonData(teamMember){
+    event.preventDefault()
+    console.log('POST DATA TM HERE',teamMember)
+    return fetch(`http://localhost:3000/pokedb.json/pokemon/pokemon`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(teamMember)
+    })
+    .then(response => response.text())
+    .then(data => {
+        //successfully posts data, need to figure out to stop infinite loop.
+        console.log("Success:", data)
+    })
+    .catch((error) => {
+        // console.error('Error:', error);
+        console.log('Error:', error)
+      });
+
+  }
 
 function toggleBtnSearch(){
     // console.log(event.target.value, "event object")
@@ -199,27 +233,6 @@ function toggleBtnSearch(){
 //     "moves": "M",
 //     "stats": " Y"
 // }
-/*POST data from user's form on submit to db.json */
-function postPokemonData(e){
-    // event.preventDefault()
-    console.log(e, "data, lets see")
-    return fetch(`http://localhost:3000/pokedb.json/pokemon/pokemon`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log("Success:", data)
-    })
-    .catch((error) => {
-        // console.error('Error:', error);
-        console.log('Error:', error)
-      });
-
-  }
 
 //   postPokemonData(e.target.value)
 
