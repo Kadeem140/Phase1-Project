@@ -1,100 +1,153 @@
 {
   "pokemon": [
     {
-      "abilities": {},
-      "types": " ",
-      "height": " ",
-      "weight": " ",
-      "img": " ",
-      "moves": " ",
-      "stats": " "
+      "id": 1,
+      "name": "charmander",
+      "abilities": "blaze",
+      "types": "fire",
+      "height": "6",
+      "weight": "85",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "moves": [
+        "dragon-tail",
+        "flame-burst",
+        "flare-blitz",
+        "swift",
+        "scary-face"
+      ],
+      "stats": [
+        "hp = 39",
+        "attack = 52",
+        "defense = 43",
+        "special-attack = 60",
+        "special-defense = 50",
+        "speed = 65"
+      ],
+      "pokedb.jsonId": "pokemon"
     },
     {
       "id": 2,
-      "abilities": "K",
-      "types": "A",
-      "height": "D",
-      "weight": "E",
-      "img": "E",
-      "moves": "M",
-      "stats": " Y",
+      "name": "metapod",
+      "abilities": "shed-skin",
+      "types": "bug",
+      "height": "7",
+      "weight": "99",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
+      "moves": [
+        "bug-bite",
+        "string-shot",
+        "harden",
+        "harden",
+        "bug-bite"
+      ],
+      "stats": [
+        "hp = 50",
+        "attack = 20",
+        "defense = 55",
+        "special-attack = 25",
+        "special-defense = 25",
+        "speed = 30"
+      ],
       "pokedb.jsonId": "pokemon"
     },
     {
       "id": 3,
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": " ",
-      "stats": "speed = 65",
+      "name": "blastoise",
+      "abilities": "torrent",
+      "types": "water",
+      "height": "16",
+      "weight": "855",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+      "moves": [
+        "helping-hand",
+        "focus-punch",
+        "dragon-tail",
+        "rapid-spin",
+        "smack-down"
+      ],
+      "stats": [
+        "hp = 79",
+        "attack = 83",
+        "defense = 100",
+        "special-attack = 85",
+        "special-defense = 105",
+        "speed = 78"
+      ],
       "pokedb.jsonId": "pokemon"
     },
     {
       "id": 4,
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": " ",
-      "stats": "speed = 65",
+      "name": "golbat",
+      "abilities": "inner-focus",
+      "types": "flying",
+      "height": "16",
+      "weight": "550",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
+      "moves": [
+        "natural-gift",
+        "natural-gift",
+        "uproar",
+        "thief",
+        "pluck"
+      ],
+      "stats": [
+        "hp = 75",
+        "attack = 80",
+        "defense = 70",
+        "special-attack = 65",
+        "special-defense = 75",
+        "speed = 90"
+      ],
       "pokedb.jsonId": "pokemon"
     },
     {
       "id": 5,
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": " ",
-      "stats": "speed = 65",
+      "name": "sandslash",
+      "abilities": "sand-veil",
+      "types": "ground",
+      "height": "10",
+      "weight": "295",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png",
+      "moves": [
+        "hone-claws",
+        "sandstorm",
+        "captivate",
+        "drill-run",
+        "seismic-toss"
+      ],
+      "stats": [
+        "hp = 75",
+        "attack = 100",
+        "defense = 110",
+        "special-attack = 45",
+        "special-defense = 55",
+        "speed = 65"
+      ],
       "pokedb.jsonId": "pokemon"
     },
     {
       "id": 6,
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": " ",
-      "stats": "speed = 65",
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 7,
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": " ",
-      "stats": "speed = 65",
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 8,
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": " ",
-      "stats": "speed = 65",
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 9,
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": " ",
-      "stats": "speed = 65",
+      "name": "mew",
+      "abilities": "synchronize",
+      "types": "psychic",
+      "height": "4",
+      "weight": "40",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+      "moves": [
+        "fake-tears",
+        "bulk-up",
+        "charm",
+        "cross-poison",
+        "recycle"
+      ],
+      "stats": [
+        "hp = 100",
+        "attack = 100",
+        "defense = 100",
+        "special-attack = 100",
+        "special-defense = 100",
+        "speed = 100"
+      ],
       "pokedb.jsonId": "pokemon"
     }
   ]
