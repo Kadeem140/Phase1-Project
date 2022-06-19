@@ -149,6 +149,56 @@
         "speed = 100"
       ],
       "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 7,
+      "name": "goldeen",
+      "abilities": "water-veil",
+      "types": "water",
+      "height": "6",
+      "weight": "150",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png",
+      "moves": [
+        "tail-whip",
+        "fury-cutter",
+        "icy-wind",
+        "ice-beam",
+        "aqua-ring"
+      ],
+      "stats": [
+        "hp = 45",
+        "attack = 67",
+        "defense = 60",
+        "special-attack = 35",
+        "special-defense = 50",
+        "speed = 63"
+      ],
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 8,
+      "name": "moltres",
+      "abilities": "pressure",
+      "types": "flying",
+      "height": "20",
+      "weight": "600",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
+      "moves": [
+        "sunny-day",
+        "hurricane",
+        "confide",
+        "giga-impact",
+        "dual-wingbeat"
+      ],
+      "stats": [
+        "hp = 90",
+        "attack = 100",
+        "defense = 90",
+        "special-attack = 125",
+        "special-defense = 85",
+        "speed = 90"
+      ],
+      "pokedb.jsonId": "pokemon"
     }
   ]
 }

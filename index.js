@@ -61,68 +61,145 @@ function revealTeamTwo(){
     if (teamTwoSection.hidden == true){
        teamTwoSection.hidden = false
    }
+    //fetch db
+    fetch(`http://localhost:3001/pokemon/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => { 
+        renderTeamTwoPokemon(data)
+    })
+    .catch((error) => {
+        // console.error('Error:', error);
+        console.log('Error:', error)
+      });
+
 }
 
 function renderTeamOnePokemon(data){
+        data.map(e => {
+            //name
+            const name1 = document.createElement('span')
+            name1.innerHTML = e.name
+            teamOneSection.append(name1)
+        
+            //img
+            const image1 = document.createElement('img')
+            image1.src = e.img
+            teamOneSection.append(image1) 
+        
+            console.log(e, "E")
+        
+            const ability1 = document.createElement('p')
+            ability1.innerHTML = e.abilities
+            teamOneSection.append(ability1)
+            //types
+            const types = e.types
+            // types.map(e => { 
+            //     let types = document.createElement('p')
+            //     types.innerHTML = e.type.name
+            //     teamOneSection.append(types)
+            //     //populates teamMember object to be posted to the database.
+            //     teamMember.types = types.innerHTML
+            // })
+            let type1 = document.createElement('p')
+                type1.innerHTML = "TYPES: " + e.types
+                teamOneSection.append(type1)
+            //height
+            const height1 = document.createElement('p')
+                height1.innerHTML = "HEIGHT: " + e.height
+                teamOneSection.append(height1)
+            //weight
+            const weight1 = document.createElement('p')
+                weight1.innerHTML = "WEIGHT: " + e.weight
+                teamOneSection.append(weight1)
+        
+            const newBtn = document.createElement('button')
+                newBtn.innerHTML = "Remove from Team"
+                console.log(e.id, "ID")
+                // newBtn.addEventListener("click", removeFromTeamOne(e.name))
+                teamOneSection.append(newBtn)
+                newBtn.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    removeFromTeamOne(e.id)
+                }, { once: true })
+            
+            //stats   
+            e.stats.map(stat => {
+                    let stats = document.createElement('p')
+                    stats.innerHTML = stat
+                    teamOneSection.append(stats)
+                    // console.log(stat.stats.name + " = " + stat.base_stat)
+                    //populates teamMember object to be posted to the database.
+                    // teamMember.stats.push(stat.name + " = " + stat.base_stat)          
+            })
+        
+    })
+} 
+
+function renderTeamTwoPokemon(data){
     data.map(e => {
         //name
-        const name1 = document.createElement('span')
-        name1.innerHTML = e.name
-        teamOneSection.append(name1)
-
+        const name2 = document.createElement('span')
+        name2.innerHTML = e.name
+        teamTwoSection.append(name2)
+    
         //img
-        const image1 = document.createElement('img')
-        image1.src = e.img
-        teamOneSection.append(image1) 
-
+        const image2 = document.createElement('img')
+        image2.src = e.img
+        teamTwoSection.append(image2) 
+    
         console.log(e, "E")
-
-        const ability1 = document.createElement('p')
-        ability1.innerHTML = e.abilities
-        teamOneSection.append(ability1)
+    
+        const ability2 = document.createElement('p')
+        ability2.innerHTML = e.abilities
+        teamTwoSection.append(ability2)
         //types
         const types = e.types
         // types.map(e => { 
         //     let types = document.createElement('p')
         //     types.innerHTML = e.type.name
-        //     teamOneSection.append(types)
+        //     teamTwoSection.append(types)
         //     //populates teamMember object to be posted to the database.
         //     teamMember.types = types.innerHTML
         // })
-        let type1 = document.createElement('p')
-            type1.innerHTML = "TYPES: " + e.types
-            teamOneSection.append(type1)
+        let type2 = document.createElement('p')
+            type2.innerHTML = "TYPES: " + e.types
+            teamTwoSection.append(type2)
         //height
-        const height1 = document.createElement('p')
-            height1.innerHTML = "HEIGHT: " + e.height
-            teamOneSection.append(height1)
+        const height2 = document.createElement('p')
+            height2.innerHTML = "HEIGHT: " + e.height
+            teamTwoSection.append(height2)
         //weight
-        const weight1 = document.createElement('p')
-            weight1.innerHTML = "WEIGHT: " + e.weight
-            teamOneSection.append(weight1)
-
-        const newBtn = document.createElement('button')
-            newBtn.innerHTML = "Remove from Team"
+        const weight2 = document.createElement('p')
+            weight2.innerHTML = "WEIGHT: " + e.weight
+            teamTwoSection.append(weight2)
+    
+        const newBtn2 = document.createElement('button')
+            newBtn2.innerHTML = "Remove from Team"
             console.log(e.id, "ID")
-            // newBtn.addEventListener("click", removeFromTeamOne(e.name))
-            teamOneSection.append(newBtn)
-            newBtn.addEventListener("click", function (event) {
+            // newBtn2.addEventListener("click", removeFromTeamOne(e.name))
+            teamTwoSection.append(newBtn2)
+            newBtn2.addEventListener("click", function (event) {
                 event.preventDefault();
-                removeFromTeamOne(e.id)
+                // removeFromTeamOne(e.id)
             }, { once: true })
         
         //stats   
         e.stats.map(stat => {
-                let stats = document.createElement('p')
-                stats.innerHTML = stat
-                teamOneSection.append(stats)
+                let stats2 = document.createElement('p')
+                stats2.innerHTML = stat
+                teamTwoSection.append(stats2)
                 // console.log(stat.stats.name + " = " + stat.base_stat)
                 //populates teamMember object to be posted to the database.
                 // teamMember.stats.push(stat.name + " = " + stat.base_stat)          
         })
-
-    })
-} 
+    
+})
+}
 
 //PUT Function
 function removeFromTeamOne(pokemon){
@@ -215,7 +292,6 @@ function fetchPokemon(name){
             name.innerHTML = pokemon.name
             pokemonOptions.append(name)
             teamMember.name = name.innerHTML
-
         //img
         const image = document.createElement('img')     //Creates img from call
             image.src = pokemon.sprites.front_default
@@ -265,8 +341,6 @@ function fetchPokemon(name){
               pokemonOptions.append(weight)
               //populates teamMember object to be posted to the database.
               teamMember.weight = weight.innerHTML
-
-
         //stats
            //This part needs to be re worked!!!!!
             const pokemonStats = pokemon.stats; //length = 6
@@ -304,8 +378,6 @@ function fetchPokemon(name){
                 }
             }
        }
-           console.log(teamMember, 'TM')
-        
             fourMoves()
             const newBtn = document.createElement('button') 
             newBtn.innerHTML = "New Moves"
@@ -317,21 +389,29 @@ function fetchPokemon(name){
             pokemonOptions.append(newBtn)     
             
             //Add functionality to this button being created for each pokemon  
-            const postbtn = document.createElement('button')
-            postbtn.innerHTML = "Add to your team"
+            const postbtnTeam1 = document.createElement('button')
+            const postbtnTeam2 = document.createElement("button")
+            postbtnTeam2.innerHTML = "Add to Team 2"
+            postbtnTeam1.innerHTML = "Add to Team 1"
             //Fix this line
-            postbtn.addEventListener('click', function (e){
+            postbtnTeam2.addEventListener('click', function (e){
                 e.preventDefault();
                 console.log("Event listener fired!", e)
-                postPokemonData(teamMember,e)
+                postPokemonDataTeam2(teamMember,e)
             })
-            pokemonOptions.append(postbtn) 
+            postbtnTeam1.addEventListener('click', function (e){
+                e.preventDefault();
+                console.log("Event listener fired!", e)
+                postPokemonDataTeam1(teamMember,e)
+            })
+            pokemonOptions.append(postbtnTeam1)
+            pokemonOptions.append(postbtnTeam2) 
        
     })
 }
     
 console.log(teamMember, "object")
-function postPokemonData(ent, event){
+function postPokemonDataTeam1(ent, event){
     event.preventDefault;
     console.log('POST DATA TM HERE',teamMember, event)
     fetch(`http://localhost:3000/pokedb.json/pokemon/pokemon`, {
@@ -351,3 +431,22 @@ function postPokemonData(ent, event){
       });
   }
 
+function postPokemonDataTeam2(ent, event){
+        // event.preventDefault();
+        console.log('POST DATA TM HERE',teamMember, event)
+        fetch(`http://localhost:3001/pokemon/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(ent)
+        })
+        .then(response => response.text())
+        .then(data => { 
+            console.log("Success:", data)
+        })
+        .catch((error) => {
+            // console.error('Error:', error);
+            console.log('Error:', error)
+          });
+}

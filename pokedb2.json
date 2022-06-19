@@ -1,13 +1,104 @@
 {
-    "pokemon2": [
-      {
-        "abilities": {},
-        "types": " ",
-        "height": " ",
-        "weight": " ",
-        "img": " ",
-        "moves": " ",
-        "stats": " "
-      }
-    ]
-  }
+  "pokemon": [
+    {
+      "id": "AlQalyd",
+      "name": "rhyhorn",
+      "abilities": "rock-head",
+      "types": "rock",
+      "height": "10",
+      "weight": "1150",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png",
+      "moves": [
+        "stone-edge",
+        "dragon-rush",
+        "drill-run",
+        "earthquake",
+        "leer"
+      ],
+      "stats": [
+        "hp = 80",
+        "attack = 85",
+        "defense = 95",
+        "special-attack = 30",
+        "special-defense = 30",
+        "speed = 25"
+      ],
+      "pokedb.jsonId": 1
+    },
+    {
+      "id": "xbyJYBe",
+      "name": "goldeen",
+      "abilities": "water-veil",
+      "types": "water",
+      "height": "6",
+      "weight": "150",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png",
+      "moves": [
+        "toxic",
+        "hail",
+        "double-edge",
+        "hidden-power",
+        "blizzard"
+      ],
+      "stats": [
+        "hp = 45",
+        "attack = 67",
+        "defense = 60",
+        "special-attack = 35",
+        "special-defense = 50",
+        "speed = 63"
+      ],
+      "pokedb.jsonId": 1
+    },
+    {
+      "id": "L8d5-eq",
+      "name": "moltres",
+      "abilities": "pressure",
+      "types": "flying",
+      "height": "20",
+      "weight": "600",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
+      "moves": [
+        "sandstorm",
+        "facade",
+        "flamethrower",
+        "defog",
+        "wing-attack"
+      ],
+      "stats": [
+        "hp = 90",
+        "attack = 100",
+        "defense = 90",
+        "special-attack = 125",
+        "special-defense = 85",
+        "speed = 90"
+      ],
+      "pokedb.jsonId": 1
+    },
+    {
+      "id": "-9KxlkX",
+      "name": "squirtle",
+      "abilities": "torrent",
+      "types": "water",
+      "height": "5",
+      "weight": "90",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+      "moves": [
+        "mimic",
+        "mud-sport",
+        "snore",
+        "tail-whip",
+        "secret-power"
+      ],
+      "stats": [
+        "hp = 44",
+        "attack = 48",
+        "defense = 65",
+        "special-attack = 50",
+        "special-defense = 64",
+        "speed = 43"
+      ],
+      "pokedb.jsonId": 1
+    }
+  ]
+}
