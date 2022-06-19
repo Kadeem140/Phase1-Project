@@ -199,6 +199,106 @@
         "speed = 90"
       ],
       "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 9,
+      "name": "bulbasaur",
+      "abilities": "overgrow",
+      "types": "poison",
+      "height": "7",
+      "weight": "69",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "moves": [
+        "grass-pledge",
+        "captivate",
+        "vine-whip",
+        "energy-ball",
+        "helping-hand"
+      ],
+      "stats": [
+        "hp = 45",
+        "attack = 49",
+        "defense = 49",
+        "special-attack = 65",
+        "special-defense = 65",
+        "speed = 45"
+      ],
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 10,
+      "name": "bulbasaur",
+      "abilities": "overgrow",
+      "types": "poison",
+      "height": "7",
+      "weight": "69",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "moves": [
+        "grass-pledge",
+        "captivate",
+        "vine-whip",
+        "energy-ball",
+        "helping-hand"
+      ],
+      "stats": [
+        "hp = 45",
+        "attack = 49",
+        "defense = 49",
+        "special-attack = 65",
+        "special-defense = 65",
+        "speed = 45"
+      ],
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 11,
+      "name": "bulbasaur",
+      "abilities": "overgrow",
+      "types": "poison",
+      "height": "7",
+      "weight": "69",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "moves": [
+        "grass-pledge",
+        "captivate",
+        "vine-whip",
+        "energy-ball",
+        "helping-hand"
+      ],
+      "stats": [
+        "hp = 45",
+        "attack = 49",
+        "defense = 49",
+        "special-attack = 65",
+        "special-defense = 65",
+        "speed = 45"
+      ],
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 12,
+      "name": "bulbasaur",
+      "abilities": "overgrow",
+      "types": "poison",
+      "height": "7",
+      "weight": "69",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "moves": [
+        "cut",
+        "endure",
+        "sunny-day",
+        "grass-knot",
+        "hidden-power"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "special-attack": 65,
+        "special-defense": 65,
+        "speed": 45
+      },
+      "pokedb.jsonId": "pokemon"
     }
   ]
 }

@@ -276,7 +276,7 @@ let teamMember = {
 "weight": " ",
 "img": " ",
 "moves": [ ],
-"stats": [ ],
+"stats": { },
 "pokedb.jsonId": i++
 }
 
@@ -346,10 +346,18 @@ function fetchPokemon(name){
             const pokemonStats = pokemon.stats; //length = 6
             let TMstats = teamMember.stats //empty
             // if(TMstats.length > 0){
-                TMstats.length = 0
+                // TMstats.length = 0
                 pokemonStats.map(e => {
-                        TMstats.push( e.stat.name + " = " + e.base_stat)
+                        // TMstats.push( e.stat.name + " = " + e.base_stat)
+                        //pushes to browser
                         pokemonOptions.append(e.stat.name + " = " + e.base_stat)
+                        //func to push stat name and stat num 
+                        var getProperty = function (propertyName, propertyValue) {
+                            return TMstats[propertyName] = propertyValue;
+                        };
+                        
+                        getProperty(e.stat.name, e.base_stat);
+                        
                 })
             // }
             console.log(TMstats, "TMstats")
@@ -450,3 +458,37 @@ function postPokemonDataTeam2(ent, event){
             console.log('Error:', error)
           });
 }
+
+
+//Battle Function
+//Conditional Battle Button(Ready for Battle) that only renders when both TeamOne and 2 ections are not false
+//API call for each DB
+//Compare map each entry then compare the pokemon.stat[1] to see which one wins
+function revealBattleBox(){
+
+}
+function pokemonBattle(){
+    //GET API call for Team 1 
+    //After Successful call render each pokemon's Name and Image to screen(Battle Box)
+
+    //Get API call for Team 2
+    //After Successful call render each pokemon's Name and Image to screen(Battle Box)
+
+    //Battle Button maps over and adds each Pokemons on each Team's Attack stat together
+    //pokemon.stats[] (Make this a #)
+
+
+}
+
+//Add to favorites function
+//Have a Button/symbol that when click adds color to it and appends it to favorites Section!
+
+// obj["key3"] = "value3";
+
+// var getProperty = function (propertyName) {
+//     return obj[propertyName];
+// };
+
+// getProperty("key1");
+// getProperty("key2");
+// getProperty("key3");
