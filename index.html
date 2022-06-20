@@ -55,6 +55,9 @@
                 <option>Dragon</option>
             </select>
         </div>
+
+        <button onclick = revealBattleBox() >ARE YOU READY TO BATTLE?</button> 
+        
         <div id="datalist-container"  class="hide" hidden = true>
             <form class = "pure-form">
                Enter Name: <input type ="input" class='names' placeholder="Input a Pokemon`s name" />
@@ -64,6 +67,18 @@
                 <button value = "close2" onClick= toggleBtnSearch() > X </button>
             </form>
         </div>
+    </div>
+
+    <div class ="battle-box" hidden = true>
+        <section id="participants-1">
+                    <p>Yay a Battle!</p>
+
+        </section>
+
+        <section id="participants-2">
+
+        </section>
+        <button value = "close3" onclick= hideBattleBox()>X</button>
     </div>
 
     <div class="pokemon-options">

@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     teamTwoButton = document.querySelector('#team-2-btn')
     teamOneSection = document.querySelector('#team-1')
     teamTwoSection = document.querySelector('#team-2')
+    battleBox = document.querySelector('.battle-box')
+    battlePokeOne = document.querySelector('#participants-1')
+    battlePokeTwo = document.querySelector('#participants-2')
     pokemonOptions = document.querySelector(".pokemon-options")
     // postbtn = document.querySelector('.add-team')
     //event listener to capture dataInput 
@@ -78,7 +81,7 @@ function revealTeamTwo(){
       });
 
 }
-
+//Add favorites button to this.
 function renderTeamOnePokemon(data){
         data.map(e => {
             //name
@@ -128,18 +131,14 @@ function renderTeamOnePokemon(data){
                 }, { once: true })
             
             //stats   
-            e.stats.map(stat => {
-                    let stats = document.createElement('p')
-                    stats.innerHTML = stat
-                    teamOneSection.append(stats)
-                    // console.log(stat.stats.name + " = " + stat.base_stat)
-                    //populates teamMember object to be posted to the database.
-                    // teamMember.stats.push(stat.name + " = " + stat.base_stat)          
-            })
-        
+            for (const key of Object.keys(e.stats)) {
+                // teamOneSection.append(key)
+                console.log(key, "Keys test")
+                teamOneSection.append(key.toUpperCase() + " : " + e.stats[key] + " ")
+            }
     })
 } 
-
+//Add favorites button to this.
 function renderTeamTwoPokemon(data){
     data.map(e => {
         //name
@@ -187,18 +186,14 @@ function renderTeamTwoPokemon(data){
                 event.preventDefault();
                 // removeFromTeamOne(e.id)
             }, { once: true })
-        
+          
         //stats   
-        e.stats.map(stat => {
-                let stats2 = document.createElement('p')
-                stats2.innerHTML = stat
-                teamTwoSection.append(stats2)
-                // console.log(stat.stats.name + " = " + stat.base_stat)
-                //populates teamMember object to be posted to the database.
-                // teamMember.stats.push(stat.name + " = " + stat.base_stat)          
-        })
-    
-})
+        for (const key of Object.keys(e.stats)) {
+            // teamOneSection.append(key)
+            console.log(key, "Keys test")
+            teamTwoSection.append(key.toUpperCase() + " : " + e.stats[key] + " ")
+        }
+    })
 }
 
 //PUT Function
@@ -216,20 +211,16 @@ function removeFromTeamOne(pokemon){
          console.log("Error:", err)
      })
 }
-
-
+//Write remove from Team 2,
 
 function toggleBtnSearch(){
     // console.log(event.target.value, "event object")
-
     if(event.target.value === "type"){
         ddContainer.hidden = false
     }
     else if (event.target.value === "close"){
         ddContainer.hidden = true
     }
-
-    
     if(event.target.value === "name"){
         dlContainer.hidden = false
     }
@@ -237,7 +228,6 @@ function toggleBtnSearch(){
         dlContainer.hidden = true
     }
 }
- 
 //moves
    //Check the length, if length > 1 map over it and render type.name
 //moves (Array) map over and render first 4 moves
@@ -252,8 +242,6 @@ function fourMoves(){
    }
 }
 
-
-
 function hideTeam(){
     if (teamOneSection.hidden == false){
         teamOneSection.hidden = true
@@ -262,6 +250,12 @@ function hideTeam(){
 function hideTeamTwo(){
     if (teamTwoSection.hidden == false){
         teamTwoSection.hidden = true
+    }
+}
+
+function hideBattleBox(){
+    if (battleBox.hidden == false){
+        battleBox.hidden = true
     }
 }
 
@@ -335,13 +329,13 @@ function fetchPokemon(name){
               pokemonOptions.append(height)
               //populates teamMember object to be posted to the database.
               teamMember.height = height.innerHTML
-        //weight
+            //weight
         const weight = document.createElement('p')
               weight.innerHTML = pokemon.weight
               pokemonOptions.append(weight)
               //populates teamMember object to be posted to the database.
               teamMember.weight = weight.innerHTML
-        //stats
+           //stats
            //This part needs to be re worked!!!!!
             const pokemonStats = pokemon.stats; //length = 6
             let TMstats = teamMember.stats //empty
@@ -355,9 +349,7 @@ function fetchPokemon(name){
                         var getProperty = function (propertyName, propertyValue) {
                             return TMstats[propertyName] = propertyValue;
                         };
-                        
                         getProperty(e.stat.name, e.base_stat);
-                        
                 })
             // }
             console.log(TMstats, "TMstats")
@@ -418,7 +410,7 @@ function fetchPokemon(name){
     })
 }
     
-console.log(teamMember, "object")
+
 function postPokemonDataTeam1(ent, event){
     event.preventDefault;
     console.log('POST DATA TM HERE',teamMember, event)
@@ -434,7 +426,6 @@ function postPokemonDataTeam1(ent, event){
         console.log("Success:", data)
     })
     .catch((error) => {
-        // console.error('Error:', error);
         console.log('Error:', error)
       });
   }
@@ -465,30 +456,137 @@ function postPokemonDataTeam2(ent, event){
 //API call for each DB
 //Compare map each entry then compare the pokemon.stat[1] to see which one wins
 function revealBattleBox(){
-
-}
-function pokemonBattle(){
-    //GET API call for Team 1 
+    //turn hidden from true to flase and vice versa
+    if (battleBox.hidden == true){
+        battleBox.hidden = false
+    }
+    //Call Battle Participants
+     //GET API call for Team 1 
     //After Successful call render each pokemon's Name and Image to screen(Battle Box)
+    fetch(`http://localhost:3000/pokemon`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => { 
+        //set up function for populating Battle Box db object I need to create
+        renderTeamOneParticipants(data)
+    })
+    .catch((error) => {
+        // console.error('Error:', error);
+        console.log('Error:', error)
+      });
 
     //Get API call for Team 2
     //After Successful call render each pokemon's Name and Image to screen(Battle Box)
-
+    fetch(`http://localhost:3001/pokemon/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => { 
+         //set up function for populating Battle Box db object I need to create
+        renderTeamTwoParticipants(data)
+    })
+    .catch((error) => {
+        // console.error('Error:', error);
+        console.log('Error:', error)
+      });
     //Battle Button maps over and adds each Pokemons on each Team's Attack stat together
     //pokemon.stats[] (Make this a #)
-
-
 }
+// function callBattleParticipants(){
+//     //GET API call for Team 1 
+//     //After Successful call render each pokemon's Name and Image to screen(Battle Box)
+//     fetch(`http://localhost:3000/pokemon`, {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     })
+//     .then(response => response.json())
+//     .then(data => { 
+//         //set up function for populating Battle Box db object I need to create
+//         renderTeamOneParticipants(data)
+//     })
+//     .catch((error) => {
+//         // console.error('Error:', error);
+//         console.log('Error:', error)
+//       });
+
+//     //Get API call for Team 2
+//     //After Successful call render each pokemon's Name and Image to screen(Battle Box)
+//     fetch(`http://localhost:3001/pokemon/`, {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     })
+//     .then(response => response.json())
+//     .then(data => { 
+//          //set up function for populating Battle Box db object I need to create
+//         renderTeamTwoParticipants(data)
+//     })
+//     .catch((error) => {
+//         // console.error('Error:', error);
+//         console.log('Error:', error)
+//       });
+//     //Battle Button maps over and adds each Pokemons on each Team's Attack stat together
+//     //pokemon.stats[] (Make this a #)
+// }
 
 //Add to favorites function
 //Have a Button/symbol that when click adds color to it and appends it to favorites Section!
 
-// obj["key3"] = "value3";
+function renderTeamOneParticipants(data){
+    console.log("Clicked Team Participants!!")
+    // Why is this not working??
+    data.map(e => {
+            console.log(e, "data map")
+            //name
+            const name3 = document.createElement('span')
+            name3.innerHTML = e.name
+            battlePokeOne.append(name3)
+    
+            //img
+            const image1 = document.createElement('img')
+            image1.src = e.img
+            battlePokeOne.append(image1) 
+    })
+} 
 
-// var getProperty = function (propertyName) {
-//     return obj[propertyName];
-// };
 
-// getProperty("key1");
-// getProperty("key2");
-// getProperty("key3");
+function renderTeamTwoParticipants(data){
+    console.log("Clicked Team Participants!!")
+   data.map(e => {
+        console.log(e, "data map")
+        //name
+        const name2 = document.createElement('span')
+        name2.innerHTML = e.name
+        battlePokeTwo.append(name2)
+
+        //img
+        const image2 = document.createElement('img')
+        image2.src = e.img
+        battlePokeTwo.append(image2) 
+})
+} 
+
+function battle(){
+    //API Call for team 1
+    //Successful call adds pokemon.stats.attack together
+
+    //API Call for team 2
+    //Successful call adds pokemon.stats.attack together
+
+    //If Team 1 bigger than team 2 they win and vice versa
+
+    //Renders TEAM 1 or 2 wins!
+
+}
+
+//Add to favorites Button!!/ function

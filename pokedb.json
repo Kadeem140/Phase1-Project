@@ -9,199 +9,24 @@
       "weight": "85",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
       "moves": [
-        "dragon-tail",
-        "flame-burst",
-        "flare-blitz",
-        "swift",
-        "scary-face"
+        "mimic",
+        "dragon-rush",
+        "double-team",
+        "fury-swipes",
+        "curse"
       ],
-      "stats": [
-        "hp = 39",
-        "attack = 52",
-        "defense = 43",
-        "special-attack = 60",
-        "special-defense = 50",
-        "speed = 65"
-      ],
+      "stats": {
+        "hp": 39,
+        "attack": 52,
+        "defense": 43,
+        "special-attack": 60,
+        "special-defense": 50,
+        "speed": 65
+      },
       "pokedb.jsonId": "pokemon"
     },
     {
       "id": 2,
-      "name": "metapod",
-      "abilities": "shed-skin",
-      "types": "bug",
-      "height": "7",
-      "weight": "99",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
-      "moves": [
-        "bug-bite",
-        "string-shot",
-        "harden",
-        "harden",
-        "bug-bite"
-      ],
-      "stats": [
-        "hp = 50",
-        "attack = 20",
-        "defense = 55",
-        "special-attack = 25",
-        "special-defense = 25",
-        "speed = 30"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 3,
-      "name": "blastoise",
-      "abilities": "torrent",
-      "types": "water",
-      "height": "16",
-      "weight": "855",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
-      "moves": [
-        "helping-hand",
-        "focus-punch",
-        "dragon-tail",
-        "rapid-spin",
-        "smack-down"
-      ],
-      "stats": [
-        "hp = 79",
-        "attack = 83",
-        "defense = 100",
-        "special-attack = 85",
-        "special-defense = 105",
-        "speed = 78"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 4,
-      "name": "golbat",
-      "abilities": "inner-focus",
-      "types": "flying",
-      "height": "16",
-      "weight": "550",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
-      "moves": [
-        "natural-gift",
-        "natural-gift",
-        "uproar",
-        "thief",
-        "pluck"
-      ],
-      "stats": [
-        "hp = 75",
-        "attack = 80",
-        "defense = 70",
-        "special-attack = 65",
-        "special-defense = 75",
-        "speed = 90"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 5,
-      "name": "sandslash",
-      "abilities": "sand-veil",
-      "types": "ground",
-      "height": "10",
-      "weight": "295",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png",
-      "moves": [
-        "hone-claws",
-        "sandstorm",
-        "captivate",
-        "drill-run",
-        "seismic-toss"
-      ],
-      "stats": [
-        "hp = 75",
-        "attack = 100",
-        "defense = 110",
-        "special-attack = 45",
-        "special-defense = 55",
-        "speed = 65"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 6,
-      "name": "mew",
-      "abilities": "synchronize",
-      "types": "psychic",
-      "height": "4",
-      "weight": "40",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
-      "moves": [
-        "fake-tears",
-        "bulk-up",
-        "charm",
-        "cross-poison",
-        "recycle"
-      ],
-      "stats": [
-        "hp = 100",
-        "attack = 100",
-        "defense = 100",
-        "special-attack = 100",
-        "special-defense = 100",
-        "speed = 100"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 7,
-      "name": "goldeen",
-      "abilities": "water-veil",
-      "types": "water",
-      "height": "6",
-      "weight": "150",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png",
-      "moves": [
-        "tail-whip",
-        "fury-cutter",
-        "icy-wind",
-        "ice-beam",
-        "aqua-ring"
-      ],
-      "stats": [
-        "hp = 45",
-        "attack = 67",
-        "defense = 60",
-        "special-attack = 35",
-        "special-defense = 50",
-        "speed = 63"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 8,
-      "name": "moltres",
-      "abilities": "pressure",
-      "types": "flying",
-      "height": "20",
-      "weight": "600",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
-      "moves": [
-        "sunny-day",
-        "hurricane",
-        "confide",
-        "giga-impact",
-        "dual-wingbeat"
-      ],
-      "stats": [
-        "hp = 90",
-        "attack = 100",
-        "defense = 90",
-        "special-attack = 125",
-        "special-defense = 85",
-        "speed = 90"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 9,
       "name": "bulbasaur",
       "abilities": "overgrow",
       "types": "poison",
@@ -209,86 +34,11 @@
       "weight": "69",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
       "moves": [
-        "grass-pledge",
-        "captivate",
-        "vine-whip",
         "energy-ball",
-        "helping-hand"
-      ],
-      "stats": [
-        "hp = 45",
-        "attack = 49",
-        "defense = 49",
-        "special-attack = 65",
-        "special-defense = 65",
-        "speed = 45"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 10,
-      "name": "bulbasaur",
-      "abilities": "overgrow",
-      "types": "poison",
-      "height": "7",
-      "weight": "69",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-      "moves": [
-        "grass-pledge",
-        "captivate",
-        "vine-whip",
-        "energy-ball",
-        "helping-hand"
-      ],
-      "stats": [
-        "hp = 45",
-        "attack = 49",
-        "defense = 49",
-        "special-attack = 65",
-        "special-defense = 65",
-        "speed = 45"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 11,
-      "name": "bulbasaur",
-      "abilities": "overgrow",
-      "types": "poison",
-      "height": "7",
-      "weight": "69",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-      "moves": [
-        "grass-pledge",
-        "captivate",
-        "vine-whip",
-        "energy-ball",
-        "helping-hand"
-      ],
-      "stats": [
-        "hp = 45",
-        "attack = 49",
-        "defense = 49",
-        "special-attack = 65",
-        "special-defense = 65",
-        "speed = 45"
-      ],
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 12,
-      "name": "bulbasaur",
-      "abilities": "overgrow",
-      "types": "poison",
-      "height": "7",
-      "weight": "69",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-      "moves": [
-        "cut",
-        "endure",
-        "sunny-day",
-        "grass-knot",
-        "hidden-power"
+        "protect",
+        "venoshock",
+        "false-swipe",
+        "echoed-voice"
       ],
       "stats": {
         "hp": 45,
@@ -299,6 +49,9 @@
         "speed": 45
       },
       "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 3
     }
   ]
 }
