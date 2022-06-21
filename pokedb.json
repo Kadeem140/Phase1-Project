@@ -2,56 +2,78 @@
   "pokemon": [
     {
       "id": 1,
-      "name": "charmander",
-      "abilities": "blaze",
-      "types": "fire",
-      "height": "6",
-      "weight": "85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "name": "blastoise",
+      "abilities": "torrent",
+      "types": "water",
+      "height": "16",
+      "weight": "855",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
       "moves": [
-        "mimic",
-        "dragon-rush",
-        "double-team",
-        "fury-swipes",
-        "curse"
+        "take-down",
+        "aura-sphere",
+        "fake-out",
+        "rock-smash",
+        "snore"
       ],
       "stats": {
-        "hp": 39,
-        "attack": 52,
-        "defense": 43,
-        "special-attack": 60,
-        "special-defense": 50,
-        "speed": 65
+        "hp": 79,
+        "attack": 83,
+        "defense": 100,
+        "special-attack": 85,
+        "special-defense": 105,
+        "speed": 78
       },
       "pokedb.jsonId": "pokemon"
     },
     {
       "id": 2,
-      "name": "bulbasaur",
-      "abilities": "overgrow",
-      "types": "poison",
-      "height": "7",
-      "weight": "69",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "name": "charizard",
+      "abilities": "blaze",
+      "types": "flying",
+      "height": "17",
+      "weight": "905",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
       "moves": [
-        "energy-ball",
-        "protect",
-        "venoshock",
-        "false-swipe",
-        "echoed-voice"
+        "power-up-punch",
+        "fire-punch",
+        "curse",
+        "blast-burn",
+        "fire-blast"
       ],
       "stats": {
-        "hp": 45,
-        "attack": 49,
-        "defense": 49,
-        "special-attack": 65,
-        "special-defense": 65,
-        "speed": 45
+        "hp": 78,
+        "attack": 84,
+        "defense": 78,
+        "special-attack": 109,
+        "special-defense": 85,
+        "speed": 100
       },
       "pokedb.jsonId": "pokemon"
     },
     {
-      "id": 3
+      "id": 3,
+      "name": "venusaur",
+      "abilities": "overgrow",
+      "types": "poison",
+      "height": "20",
+      "weight": "1000",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+      "moves": [
+        "toxic",
+        "poison-powder",
+        "frenzy-plant",
+        "giga-impact",
+        "outrage"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 82,
+        "defense": 83,
+        "special-attack": 100,
+        "special-defense": 100,
+        "speed": 80
+      },
+      "pokedb.jsonId": "pokemon"
     }
   ]
 }

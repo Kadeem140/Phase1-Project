@@ -546,16 +546,16 @@ function renderTeamOneParticipants(data){
     console.log("Clicked Team Participants!!")
     // Why is this not working??
     data.map(e => {
-            console.log(e, "data map")
-            //name
-            const name3 = document.createElement('span')
-            name3.innerHTML = e.name
-            battlePokeOne.append(name3)
-    
-            //img
-            const image1 = document.createElement('img')
-            image1.src = e.img
-            battlePokeOne.append(image1) 
+        console.log(e, "data map")
+        //name
+        const name3 = document.createElement('span')
+        name3.innerHTML = e.name
+        battlePokeOne.append(name3)
+
+        //img
+        const image1 = document.createElement('img')
+        image1.src = e.img
+        battlePokeOne.append(image1)       
     })
 } 
 
@@ -577,16 +577,66 @@ function renderTeamTwoParticipants(data){
 } 
 
 function battle(){
+    let teamOneSum = 0
+    let teamTwoSum = 0
     //API Call for team 1
     //Successful call adds pokemon.stats.attack together
+    fetch(`http://localhost:3000/pokemon`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => { 
+       teamOneSum += sumOfStats(data)
+       console.log(teamOneSum, "Team one Sum")  
+      })
+    .catch((error) => {
+        // console.error('Error:', error);
+        console.log('Error:', error)
+      });
 
     //API Call for team 2
-    //Successful call adds pokemon.stats.attack together
+    fetch(`http://localhost:3001/pokemon`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => { 
+       teamTwoSum += sumOfStats(data)
+       console.log(teamTwoSum, "Team Two Sum")  
+      })
+    .catch((error) => {
+        // console.error('Error:', error);
+        console.log('Error:', error)
+      });
 
     //If Team 1 bigger than team 2 they win and vice versa
 
-    //Renders TEAM 1 or 2 wins!
+    if(teamOneSum > teamTwoSum){
+        const winner = document.createElement('h1')
+        winner.innerHTML = " TEAM ONE WINS!"
+        battleBox.append(winner)
+    }
+    else{
+        const winner = document.createElement('h1')
+        winner.innerHTML = " TEAM TWO WINS!"
+        battleBox.prepend(winner)
+    }
 
 }
 
 //Add to favorites Button!!/ function
+function sumOfStats(data){
+    let statSum = 0;
+    data.map(e => {
+        statSum += e.stats.hp
+        statSum += e.stats.attack
+        statSum += e.stats.defense
+        statSum += e.stats.speed
+    })
+    return statSum
+}
