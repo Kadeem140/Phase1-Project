@@ -7,6 +7,7 @@ let dataList;
 let dropDown;
 
 
+
 //Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
     //once the content loads i want the event listeners to add to their respective element.
@@ -281,6 +282,24 @@ function fetchPokemon(name){
     return fetch(`https://pokeapi.co/api/v2/pokemon/${lowerName}`) //GET method with input
     .then(res => res.json())                //Convert to Json format
     .then(pokemon => {                      //Json formatted Data for our usage
+
+
+        // <div class="card" style="width: 18rem;">
+        // <img src="..." class="card-img-top" alt="...">
+        // <div class="card-body">
+        //     <h5 class="card-title">Card title</h5>
+        //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        //     <a href="#" class="btn btn-primary">Go somewhere</a>
+        // </div>
+        // </div>
+
+        const card = document.createElement('div')
+        card.style = "width: 18rem;"
+        const cardBody = document.createElement('div')
+        card.append(cardBody)
+        const cardTitle = document.createElement('h5')
+        const cardText = document.createElement('p')
+        pokemonOptions.append(card)
        //name
        const name = document.createElement('span')
             name.innerHTML = pokemon.name
@@ -289,7 +308,7 @@ function fetchPokemon(name){
         //img
         const image = document.createElement('img')     //Creates img from call
             image.src = pokemon.sprites.front_default
-            pokemonOptions.append(image)                //Renders created img to the DOM
+            cardBody.append(image)                //Renders created img to the DOM
             teamMember.img = image.src                  //populates teamMember object to be posted to the database.
         //abilities
         if (name){
@@ -297,7 +316,7 @@ function fetchPokemon(name){
                 if(!e.is_hidden){
                     const ability1 = document.createElement('p')
                     ability1.innerHTML = e.ability.name
-                    pokemonOptions.append(ability1)
+                    cardBody.append(ability1)
                     teamMember.abilities.value = ability1 
                     //populates teamMember object to be posted to the database.
                     teamMember.abilities = ability1.innerHTML  
@@ -317,7 +336,7 @@ function fetchPokemon(name){
         else { 
             let type = document.createElement('p')
                 type.innerHTML = pokemon.types[0].type.name
-                pokemonOptions.append(type)
+                cardBody.append(type)
                 //populates teamMember object to be posted to the database.
                 teamMember.types = type.innerHTML
             }
@@ -325,14 +344,14 @@ function fetchPokemon(name){
         else { alert("Please Enter a Pokemon name to get New Moves!")}
         //height
         const height = document.createElement('p')
-              height.innerHTML = pokemon.height
-              pokemonOptions.append(height)
+              height.innerHTML = "HEIGHT: " + pokemon.height
+              cardBody.append(height)
               //populates teamMember object to be posted to the database.
               teamMember.height = height.innerHTML
             //weight
         const weight = document.createElement('p')
-              weight.innerHTML = pokemon.weight
-              pokemonOptions.append(weight)
+              weight.innerHTML = "WEIGHT: " + pokemon.weight
+              cardBody.append(weight)
               //populates teamMember object to be posted to the database.
               teamMember.weight = weight.innerHTML
            //stats
@@ -344,7 +363,7 @@ function fetchPokemon(name){
                 pokemonStats.map(e => {
                         // TMstats.push( e.stat.name + " = " + e.base_stat)
                         //pushes to browser
-                        pokemonOptions.append(e.stat.name + " = " + e.base_stat)
+                        cardBody.append(e.stat.name + " : " + e.base_stat + " ")
                         //func to push stat name and stat num 
                         var getProperty = function (propertyName, propertyValue) {
                             return TMstats[propertyName] = propertyValue;
@@ -386,7 +405,7 @@ function fetchPokemon(name){
                 teamMember.moves = pokemon.moves[getRandomInt(100)].move.name + "  "
                 console.log("On Click is hooked up now.", teamMember)
             })
-            pokemonOptions.append(newBtn)     
+            cardBody.append(newBtn)     
             
             //Add functionality to this button being created for each pokemon  
             const postbtnTeam1 = document.createElement('button')
@@ -404,8 +423,8 @@ function fetchPokemon(name){
                 console.log("Event listener fired!", e)
                 postPokemonDataTeam1(teamMember,e)
             })
-            pokemonOptions.append(postbtnTeam1)
-            pokemonOptions.append(postbtnTeam2) 
+            cardBody.append(postbtnTeam1)
+            cardBody.append(postbtnTeam2) 
        
     })
 }

@@ -5,31 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Team</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
-<body>
-    <main>
-    <section>
-        <h1>WELCOME TO THE WONDERFUL WORLD OF POKEMON!</h1>
-    </section>
-   <div id = "root">
-        <nav id="nav-bar">
-            <a href="index.html" onclick="route()">Home</a>
-            <a href="/pages/about.html" onclick="route()">about</a>
-            <a href="/pages/pokemon.html" onclick="route()">Pokemon</a>
-        </nav>
-    </div> 
 
-    <div id ="search-by">
+<body class="bg-danger">
+    <main >
+    <section>
+        <div class="text-white">
+            <h1 class="text-center ">WELCOME TO THE WONDERFUL WORLD OF POKEMON!</h1>
+        </div>
+
+    </section>
+
+    <div class ="container-md" id ="search-by">
         <h3>Search by: </h2>
-        <p>Filter your search options by Pokemon Name
-            or by type. </p>
-        <button id="btn-name" value="name" class = "btns" onClick= toggleBtnSearch() >Pokemon Name</button>
-        <button id="btn-type" value="type" class = "btns" onClick= toggleBtnSearch() >Pokemon Type</button>
+        <p>You and a Friend can search through the First Generation of Pokemon to look for partners you may
+            want to add to your team for Battle..
+        </p>
+        <p>Filter your search options by Pokemon Name </p>
+       
+        <button id="btn-name" value="name" class = "btn btn-success" onClick= toggleBtnSearch() >Pokemon Name</button>
+
+        <div id="datalist-container"  class="hide" hidden = true>
+            <form class = "pure-form">
+               Enter Name: <input type ="input" class='names' placeholder="Input a Pokemon`s name" />
+                <button type = "submit">Submit!</button>
+                <button type = "submit" onclick=fourMoves()> New Moves! </button>
+                   
+                <button value = "close2" onClick= toggleBtnSearch() > X </button>
+            </form>
+        </div>
         <!-- //On click, hidden = "false",  -->
     </div>
 
-    <div id="pokmeon-search">
+    <div class ="container-md" id="pokmeon-search">
         <h2>Add a Pokemon to your Team: </h2>
         <div id="dropdown-container" class="hide" hidden = "true">
             <h3>Select a Pokemon by Type: </h3> <button value = "close" onClick= toggleBtnSearch() >X</button>
@@ -57,16 +69,6 @@
         </div>
 
         <button onclick = revealBattleBox() >ARE YOU READY TO BATTLE?</button> 
-        
-        <div id="datalist-container"  class="hide" hidden = true>
-            <form class = "pure-form">
-               Enter Name: <input type ="input" class='names' placeholder="Input a Pokemon`s name" />
-                <button type = "submit">Submit!</button>
-                <button type = "submit" onclick=fourMoves()> New Moves! </button>
-                   
-                <button value = "close2" onClick= toggleBtnSearch() > X </button>
-            </form>
-        </div>
     </div>
 
     <div class ="battle-box" hidden = true>

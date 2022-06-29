@@ -2,44 +2,13 @@
   "pokemon": [
     {
       "id": 1,
-      "name": "blastoise",
-      "abilities": "torrent",
-      "types": "water",
-      "height": "16",
-      "weight": "855",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
-      "moves": [
-        "take-down",
-        "aura-sphere",
-        "fake-out",
-        "rock-smash",
-        "snore"
-      ],
-      "stats": {
-        "hp": 79,
-        "attack": 83,
-        "defense": 100,
-        "special-attack": 85,
-        "special-defense": 105,
-        "speed": 78
-      },
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 2,
       "name": "charizard",
       "abilities": "blaze",
       "types": "flying",
-      "height": "17",
-      "weight": "905",
+      "height": "HEIGHT: 17",
+      "weight": "WEIGHT: 905",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      "moves": [
-        "power-up-punch",
-        "fire-punch",
-        "curse",
-        "blast-burn",
-        "fire-blast"
-      ],
+      "moves": "dragon-claw  ",
       "stats": {
         "hp": 78,
         "attack": 84,
@@ -51,27 +20,96 @@
       "pokedb.jsonId": "pokemon"
     },
     {
-      "id": 3,
-      "name": "venusaur",
-      "abilities": "overgrow",
-      "types": "poison",
-      "height": "20",
-      "weight": "1000",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+      "id": 2,
+      "name": "moltres",
+      "abilities": "pressure",
+      "types": "flying",
+      "height": "HEIGHT: 20",
+      "weight": "WEIGHT: 600",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
       "moves": [
+        "heat-wave",
+        "flare-blitz",
         "toxic",
-        "poison-powder",
-        "frenzy-plant",
-        "giga-impact",
-        "outrage"
+        "ominous-wind",
+        "facade"
       ],
       "stats": {
-        "hp": 80,
-        "attack": 82,
-        "defense": 83,
-        "special-attack": 100,
-        "special-defense": 100,
-        "speed": 80
+        "hp": 90,
+        "attack": 100,
+        "defense": 90,
+        "special-attack": 125,
+        "special-defense": 85,
+        "speed": 90
+      },
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 3,
+      "name": "golbat",
+      "abilities": "inner-focus",
+      "types": "flying",
+      "height": "HEIGHT: 16",
+      "weight": "WEIGHT: 550",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
+      "moves": [
+        "captivate",
+        "whirlwind",
+        "giga-impact",
+        "secret-power",
+        "super-fang"
+      ],
+      "stats": {
+        "hp": 75,
+        "attack": 80,
+        "defense": 70,
+        "special-attack": 65,
+        "special-defense": 75,
+        "speed": 90
+      },
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 4,
+      "name": "bulbasaur",
+      "abilities": "overgrow",
+      "types": "poison",
+      "height": "HEIGHT: 7",
+      "weight": "WEIGHT: 69",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "moves": "bind  ",
+      "stats": {
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "special-attack": 65,
+        "special-defense": 65,
+        "speed": 45
+      },
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 5,
+      "name": "charmander",
+      "abilities": "blaze",
+      "types": "fire",
+      "height": "HEIGHT: 6",
+      "weight": "WEIGHT: 85",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "moves": [
+        "round",
+        "air-cutter",
+        "air-cutter",
+        "substitute",
+        "mega-kick"
+      ],
+      "stats": {
+        "hp": 39,
+        "attack": 52,
+        "defense": 43,
+        "special-attack": 60,
+        "special-defense": 50,
+        "speed": 65
       },
       "pokedb.jsonId": "pokemon"
     }

@@ -1,19 +1,19 @@
 {
   "pokemon": [
     {
-      "id": 2,
+      "id": 1,
       "name": "mew",
       "abilities": "synchronize",
       "types": "psychic",
-      "height": "4",
-      "weight": "40",
+      "height": "HEIGHT: 4",
+      "weight": "WEIGHT: 40",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
       "moves": [
-        "muddy-water",
-        "gyro-ball",
-        "bounce",
-        "role-play",
-        "water-gun"
+        "hyper-beam",
+        "future-sight",
+        "gunk-shot",
+        "brave-bird",
+        "confide"
       ],
       "stats": {
         "hp": 100,
@@ -26,52 +26,52 @@
       "pokedb.jsonId": 1
     },
     {
-      "id": 3,
-      "name": "moltres",
+      "id": 2,
+      "name": "mewtwo",
       "abilities": "pressure",
-      "types": "flying",
-      "height": "20",
-      "weight": "600",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
+      "types": "psychic",
+      "height": "HEIGHT: 20",
+      "weight": "WEIGHT: 1220",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
       "moves": [
-        "round",
-        "ember",
-        "ember",
-        "headbutt",
-        "sunny-day"
+        "solar-beam",
+        "confide",
+        "secret-power",
+        "recover",
+        "psywave"
       ],
       "stats": {
-        "hp": 90,
-        "attack": 100,
+        "hp": 106,
+        "attack": 110,
         "defense": 90,
-        "special-attack": 125,
-        "special-defense": 85,
-        "speed": 90
+        "special-attack": 154,
+        "special-defense": 90,
+        "speed": 130
       },
       "pokedb.jsonId": 1
     },
     {
-      "id": 4,
-      "name": "zapdos",
-      "abilities": "pressure",
-      "types": "flying",
-      "height": "16",
-      "weight": "526",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png",
+      "id": 3,
+      "name": "blastoise",
+      "abilities": "torrent",
+      "types": "water",
+      "height": "HEIGHT: 16",
+      "weight": "WEIGHT: 855",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
       "moves": [
-        "sandstorm",
-        "sleep-talk",
-        "giga-impact",
-        "air-cutter",
-        "twister"
+        "helping-hand",
+        "rest",
+        "blizzard",
+        "rollout",
+        "water-gun"
       ],
       "stats": {
-        "hp": 90,
-        "attack": 90,
-        "defense": 85,
-        "special-attack": 125,
-        "special-defense": 90,
-        "speed": 100
+        "hp": 79,
+        "attack": 83,
+        "defense": 100,
+        "special-attack": 85,
+        "special-defense": 105,
+        "speed": 78
       },
       "pokedb.jsonId": 1
     }
