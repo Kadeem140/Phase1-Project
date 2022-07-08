@@ -298,13 +298,18 @@ function fetchPokemon(name){
         const cardBody = document.createElement('div')
         card.append(cardBody)
         const cardTitle = document.createElement('h5')
+        const cardTitle = document.createElement('h5')
+        const cardTitle = document.createElement('h5')
+        const cardTitle = document.createElement('h5')
+        cardTitle.innerHTML = pokemon.name
+        cardBody.append(cardTitle)
         const cardText = document.createElement('p')
         pokemonOptions.append(card)
        //name
-       const name = document.createElement('span')
-            name.innerHTML = pokemon.name
-            pokemonOptions.append(name)
-            teamMember.name = name.innerHTML
+    //    const name = document.createElement('span')
+    //         name.innerHTML = pokemon.name
+    //         pokemonOptions.append(name)
+    //         teamMember.name = name.innerHTML
         //img
         const image = document.createElement('img')     //Creates img from call
             image.src = pokemon.sprites.front_default
@@ -659,3 +664,6 @@ function sumOfStats(data){
     })
     return statSum
 }
+
+
+//use card tmeplate for the Battle box
