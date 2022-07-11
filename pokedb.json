@@ -112,6 +112,51 @@
         "speed": 65
       },
       "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 6,
+      "name": "",
+      "abilities": "Ability: blaze",
+      "types": "TYPES: flying",
+      "height": "HEIGHT: 17",
+      "weight": "WEIGHT: 905",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "moves": [
+        "scale-shot",
+        "hail",
+        "skitter-smack",
+        "frost-breath",
+        "gyro-ball",
+        "bide",
+        "mega-kick",
+        "weather-ball",
+        "double-team",
+        "growl",
+        "protect",
+        "dragon-breath",
+        "dragon-rush",
+        "natural-gift",
+        "take-down",
+        "fire-fang",
+        "sunny-day",
+        "air-cutter",
+        "dragon-pulse",
+        "body-slam",
+        "fire-pledge",
+        "protect",
+        "heat-crash",
+        "steel-wing",
+        "captivate"
+      ],
+      "stats": {
+        "hp": 78,
+        "attack": 84,
+        "defense": 78,
+        "special-attack": 109,
+        "special-defense": 85,
+        "speed": 100
+      },
+      "pokedb.jsonId": "pokemon"
     }
   ]
 }

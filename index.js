@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     battleBox = document.querySelector('.battle-box')
     battlePokeOne = document.querySelector('#participants-1')
     battlePokeTwo = document.querySelector('#participants-2')
-    pokemonOptions = document.querySelector(".pokemon-options")
+    pokemonOptions = document.querySelector(".pokemonOptions")
     // postbtn = document.querySelector('.add-team')
     //event listener to capture dataInput 
     searchForm.addEventListener('submit', function (e) {
@@ -280,36 +280,20 @@ function fetchPokemon(name){
     // Event.preventDefault()
     const lowerName = name.toLowerCase() //Takes user input, lowercases it. 
     return fetch(`https://pokeapi.co/api/v2/pokemon/${lowerName}`) //GET method with input
-    .then(res => res.json())                //Convert to Json format
-    .then(pokemon => {                      //Json formatted Data for our usage
-
-
-        // <div class="card" style="width: 18rem;">
-        // <img src="..." class="card-img-top" alt="...">
-        // <div class="card-body">
-        //     <h5 class="card-title">Card title</h5>
-        //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        //     <a href="#" class="btn btn-primary">Go somewhere</a>
-        // </div>
-        // </div>
+    .then(res => res.json())                
+    .then(pokemon => {  
 
         const card = document.createElement('div')
-        card.style = "width: 18rem;"
+        card.setAttribute("class", "card")
+        card.style= "width: 18rem;"
+        
         const cardBody = document.createElement('div')
         card.append(cardBody)
-        const cardTitle = document.createElement('h5')
-        const cardTitle = document.createElement('h5')
-        const cardTitle = document.createElement('h5')
-        const cardTitle = document.createElement('h5')
-        cardTitle.innerHTML = pokemon.name
-        cardBody.append(cardTitle)
-        const cardText = document.createElement('p')
+        const cardName = document.createElement('h5')
+        //name
+        cardName.innerHTML = pokemon.name
+        cardBody.append(cardName)
         pokemonOptions.append(card)
-       //name
-    //    const name = document.createElement('span')
-    //         name.innerHTML = pokemon.name
-    //         pokemonOptions.append(name)
-    //         teamMember.name = name.innerHTML
         //img
         const image = document.createElement('img')     //Creates img from call
             image.src = pokemon.sprites.front_default
@@ -320,7 +304,7 @@ function fetchPokemon(name){
             pokemon.abilities.map(e => {
                 if(!e.is_hidden){
                     const ability1 = document.createElement('p')
-                    ability1.innerHTML = e.ability.name
+                    ability1.innerHTML = "Ability: " + e.ability.name
                     cardBody.append(ability1)
                     teamMember.abilities.value = ability1 
                     //populates teamMember object to be posted to the database.
@@ -332,21 +316,19 @@ function fetchPokemon(name){
             const types = pokemon.types
             types.map(e => { 
                 let types = document.createElement('p')
-                types.innerHTML = e.type.name
-                pokemonOptions.append(types)
+                types.innerHTML = "TYPES: "+ e.type.name
+                cardBody.append(types)
                 //populates teamMember object to be posted to the database.
                 teamMember.types = types.innerHTML
             })
         }   
         else { 
             let type = document.createElement('p')
-                type.innerHTML = pokemon.types[0].type.name
+                type.innerHTML = "TYPE: "+ pokemon.types[0].type.name
                 cardBody.append(type)
                 //populates teamMember object to be posted to the database.
                 teamMember.types = type.innerHTML
             }
-        }
-        else { alert("Please Enter a Pokemon name to get New Moves!")}
         //height
         const height = document.createElement('p')
               height.innerHTML = "HEIGHT: " + pokemon.height
@@ -360,36 +342,36 @@ function fetchPokemon(name){
               //populates teamMember object to be posted to the database.
               teamMember.weight = weight.innerHTML
            //stats
-           //This part needs to be re worked!!!!!
+        const cardStats = document.createElement("div")
+        cardStats.setAttribute("class", "cardStats")
             const pokemonStats = pokemon.stats; //length = 6
             let TMstats = teamMember.stats //empty
-            // if(TMstats.length > 0){
-                // TMstats.length = 0
                 pokemonStats.map(e => {
-                        // TMstats.push( e.stat.name + " = " + e.base_stat)
-                        //pushes to browser
-                        cardBody.append(e.stat.name + " : " + e.base_stat + " ")
+                        let stat = document.createElement('p')
+                        stat.innerHTML = e.stat.name + " : " + e.base_stat + " "
+                        cardStats.append(stat)
                         //func to push stat name and stat num 
                         var getProperty = function (propertyName, propertyValue) {
                             return TMstats[propertyName] = propertyValue;
                         };
                         getProperty(e.stat.name, e.base_stat);
                 })
-            // }
-            console.log(TMstats, "TMstats")
-
-
-        //moves
-           //Check the length, if length > 1 map over it and render type.name
-        //moves (Array) map over and render first 4 moves
+            card.append(cardStats)
+            }
         
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
           }
         //  moves
+        const cardMoves = document.createElement("div")
+        const moveTitle = document.createElement("p")
+        moveTitle.innerHTML = "MOVES:"
+        cardMoves.setAttribute('class', "cardMoves")
+        cardMoves.append(moveTitle)
+
        function fourMoves(){
            for (i = 0; i < 4; i++){
-            pokemonOptions.append(pokemon.moves[getRandomInt(pokemon.moves.length - 1)].move.name + "  ")
+            cardMoves.append(pokemon.moves[getRandomInt(pokemon.moves.length - 1)].move.name + "  ")
             //add conditional statement here if the teamMember.moves is populated then we clear it out then add 4 moves.
             //for new pokemon to not copy each pokemon's moves.
 
@@ -402,21 +384,16 @@ function fetchPokemon(name){
                 }
             }
        }
-            fourMoves()
-            const newBtn = document.createElement('button') 
-            newBtn.innerHTML = "New Moves"
-            newBtn.addEventListener("click", function(){
-                // pokemonOptions.append(pokemon.moves[getRandomInt(100)].move.name + "  ")
-                teamMember.moves = pokemon.moves[getRandomInt(100)].move.name + "  "
-                console.log("On Click is hooked up now.", teamMember)
-            })
-            cardBody.append(newBtn)     
-            
+       card.append(cardMoves)
+            fourMoves() 
             //Add functionality to this button being created for each pokemon  
-            const postbtnTeam1 = document.createElement('button')
-            const postbtnTeam2 = document.createElement("button")
-            postbtnTeam2.innerHTML = "Add to Team 2"
-            postbtnTeam1.innerHTML = "Add to Team 1"
+            const cardButtons = document.createElement('div')
+            cardButtons.setAttribute("class", "cardButtons")
+
+                const postbtnTeam1 = document.createElement('button')
+                const postbtnTeam2 = document.createElement("button")
+                postbtnTeam2.innerHTML = "Add to Team 2"
+                postbtnTeam1.innerHTML = "Add to Team 1"
             //Fix this line
             postbtnTeam2.addEventListener('click', function (e){
                 e.preventDefault();
@@ -428,8 +405,9 @@ function fetchPokemon(name){
                 console.log("Event listener fired!", e)
                 postPokemonDataTeam1(teamMember,e)
             })
-            cardBody.append(postbtnTeam1)
-            cardBody.append(postbtnTeam2) 
+            cardButtons.append(postbtnTeam1)
+            cardButtons.append(postbtnTeam2) 
+            card.append(cardButtons)
        
     })
 }

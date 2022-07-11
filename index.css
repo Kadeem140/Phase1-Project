@@ -1,0 +1,31 @@
+
+div.card {
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+div.pokemonOptions {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 50px 25px 50px;
+  }
+
+div.cardButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+div.cardStats {
+    display: flex;
+    flex-direction: column
+}
+
+div.cardMoves {
+    display: flex;
+}
+
+div.revealTeams {
+    display: flex;
+    align-items: center;
+}
