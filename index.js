@@ -18,28 +18,27 @@ document.addEventListener("DOMContentLoaded", () => {
     teamOneButton = document.querySelector('#team-1-btn')
     teamTwoButton = document.querySelector('#team-2-btn')
     teamOneSection = document.querySelector('#team1')
-    teamTwoSection = document.querySelector('#team-2')
+    teamTwoSection = document.querySelector('#team2')
     battleBox = document.querySelector('.battleBox')
     battlePokeOne = document.querySelector('#participants-1')
     battlePokeTwo = document.querySelector('#participants-2')
     pokemonOptions = document.querySelector(".pokemonOptions")
+    teamOneTitle = document.querySelector(".team1")
+    teamTwoTitle = document.querySelector(".team2")
     // postbtn = document.querySelector('.add-team')
     //event listener to capture dataInput 
     searchForm.addEventListener('submit', function (e) {
         //prevent the normal submission of the form
         e.preventDefault();
-        fetchPokemon(dataInput.value)
-        //API call by name(input.value), if successful render a card to be appended to the DOM
-        //if Unsuccessful Alert(That is not a valid pokemon name)   
+        fetchPokemon(dataInput.value)  
     });
-    //initial render, testing... it works
-   
 })
 
 //button reveals for Teams
 function revealTeam(){
     if (teamOneSection.hidden == true){
         teamOneSection.hidden = false
+        teamOneTitle.hidden = false
     }
     //fetch db
     fetch(`http://localhost:3000/pokemon`, {
@@ -61,6 +60,7 @@ function revealTeam(){
 function revealTeamTwo(){
     if (teamTwoSection.hidden == true){
        teamTwoSection.hidden = false
+       teamTwoTitle.hidden = false
    }
     //fetch db
     fetch(`http://localhost:3001/pokemon/`, {
@@ -83,7 +83,7 @@ function renderTeamOnePokemon(data){
         data.map(e => {
              //team 1 card
             const teamOneCard = document.createElement('div')
-            teamOneCard.setAttribute("class", "card")
+            teamOneCard.setAttribute("class", "card1")
             teamOneCard.style= "width: 18rem;"
 
             const cardBody = document.createElement('div')
@@ -127,7 +127,6 @@ function renderTeamOnePokemon(data){
             teamOneStats.setAttribute('class', "teamOneStats")
 
             for (const key of Object.keys(e.stats)) {
-                
                teamOneStats.append(key.toUpperCase() + " : " + e.stats[key] + " ")
             }
             cardBody.append(teamOneStats)
@@ -138,58 +137,62 @@ function renderTeamOnePokemon(data){
 //Add favorites button to this.
 function renderTeamTwoPokemon(data){
     data.map(e => {
+        //team 2 card
+        const teamTwoCard = document.createElement('div')
+        teamTwoCard.setAttribute("class", "card2")
+        teamTwoCard.style= "width: 18rem;"
+
+        const cardBody = document.createElement('div')
+
         //name
         const name2 = document.createElement('span')
         name2.innerHTML = e.name
-        teamTwoSection.append(name2)
+        cardBody.append(name2)
     
         //img
         const image2 = document.createElement('img')
         image2.src = e.img
-        teamTwoSection.append(image2) 
+        cardBody.append(image2) 
     
         console.log(e, "E")
     
         const ability2 = document.createElement('p')
         ability2.innerHTML = e.abilities
-        teamTwoSection.append(ability2)
+        cardBody.append(ability2)
         //types
         const types = e.types
-        // types.map(e => { 
-        //     let types = document.createElement('p')
-        //     types.innerHTML = e.type.name
-        //     teamTwoSection.append(types)
-        //     //populates teamMember object to be posted to the database.
-        //     teamMember.types = types.innerHTML
-        // })
+       
         let type2 = document.createElement('p')
             type2.innerHTML = "TYPES: " + e.types
-            teamTwoSection.append(type2)
+            cardBody.append(type2)
         //height
         const height2 = document.createElement('p')
             height2.innerHTML = "HEIGHT: " + e.height
-            teamTwoSection.append(height2)
+            cardBody.append(height2)
         //weight
         const weight2 = document.createElement('p')
             weight2.innerHTML = "WEIGHT: " + e.weight
-            teamTwoSection.append(weight2)
+            cardBody.append(weight2)
     
         const newBtn2 = document.createElement('button')
             newBtn2.innerHTML = "Remove from Team"
             console.log(e.id, "ID")
             // newBtn2.addEventListener("click", removeFromTeamOne(e.name))
-            teamTwoSection.append(newBtn2)
+            cardBody.append(newBtn2)
             newBtn2.addEventListener("click", function (event) {
                 event.preventDefault();
                 // removeFromTeamOne(e.id)
             }, { once: true })
           
         //stats   
+        const teamTwoStats = document.createElement('div')
+        teamTwoStats.setAttribute('class', "teamTwoStats")
         for (const key of Object.keys(e.stats)) {
-            // teamOneSection.append(key)
-            console.log(key, "Keys test")
-            teamTwoSection.append(key.toUpperCase() + " : " + e.stats[key] + " ")
+            teamTwoStats.append(key.toUpperCase() + " : " + e.stats[key] + " ")
         }
+        cardBody.append(teamTwoStats)
+        teamTwoCard.append(cardBody)
+        teamTwoSection.append(teamTwoCard)
     })
 }
 
@@ -242,11 +245,13 @@ function fourMoves(){
 function hideTeam(){
     if (teamOneSection.hidden == false){
         teamOneSection.hidden = true
+        teamOneTitle.hidden = true
     }
 }
 function hideTeamTwo(){
     if (teamTwoSection.hidden == false){
         teamTwoSection.hidden = true
+        teamTwoTitle.hidden = true
     }
 }
 
@@ -286,10 +291,13 @@ function fetchPokemon(name){
         const cardBody = document.createElement('div')
         card.append(cardBody)
         const cardName = document.createElement('h5')
+
         //name
         cardName.innerHTML = pokemon.name
         cardBody.append(cardName)
+        teamMember.name = pokemon.name
         pokemonOptions.append(card)
+        
         //img
         const image = document.createElement('img')     //Creates img from call
             image.src = pokemon.sprites.front_default
@@ -448,19 +456,11 @@ function postPokemonDataTeam2(ent, event){
           });
 }
 
-
-//Battle Function
-//Conditional Battle Button(Ready for Battle) that only renders when both TeamOne and 2 ections are not false
-//API call for each DB
-//Compare map each entry then compare the pokemon.stat[1] to see which one wins
 function revealBattleBox(){
     //turn hidden from true to flase and vice versa
     if (battleBox.hidden == true){
         battleBox.hidden = false
     }
-    //Call Battle Participants
-     //GET API call for Team 1 
-    //After Successful call render each pokemon's Name and Image to screen(Battle Box)
     fetch(`http://localhost:3000/pokemon`, {
         method: 'GET',
         headers: {
@@ -469,7 +469,6 @@ function revealBattleBox(){
     })
     .then(response => response.json())
     .then(data => { 
-        //set up function for populating Battle Box db object I need to create
         renderTeamOneParticipants(data)
     })
     .catch((error) => {
@@ -497,48 +496,6 @@ function revealBattleBox(){
     //Battle Button maps over and adds each Pokemons on each Team's Attack stat together
     //pokemon.stats[] (Make this a #)
 }
-// function callBattleParticipants(){
-//     //GET API call for Team 1 
-//     //After Successful call render each pokemon's Name and Image to screen(Battle Box)
-//     fetch(`http://localhost:3000/pokemon`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//     })
-//     .then(response => response.json())
-//     .then(data => { 
-//         //set up function for populating Battle Box db object I need to create
-//         renderTeamOneParticipants(data)
-//     })
-//     .catch((error) => {
-//         // console.error('Error:', error);
-//         console.log('Error:', error)
-//       });
-
-//     //Get API call for Team 2
-//     //After Successful call render each pokemon's Name and Image to screen(Battle Box)
-//     fetch(`http://localhost:3001/pokemon/`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//     })
-//     .then(response => response.json())
-//     .then(data => { 
-//          //set up function for populating Battle Box db object I need to create
-//         renderTeamTwoParticipants(data)
-//     })
-//     .catch((error) => {
-//         // console.error('Error:', error);
-//         console.log('Error:', error)
-//       });
-//     //Battle Button maps over and adds each Pokemons on each Team's Attack stat together
-//     //pokemon.stats[] (Make this a #)
-// }
-
-//Add to favorites function
-//Have a Button/symbol that when click adds color to it and appends it to favorites Section!
 
 function renderTeamOneParticipants(data){
     console.log("Clicked Team Participants!!")
@@ -546,114 +503,51 @@ function renderTeamOneParticipants(data){
     data.map(e => {
         //team 1 card
         const teamOneCard = document.createElement('div')
-        teamOneCard.setAttribute("class", "card")
+        teamOneCard.setAttribute("class", "card1")
         teamOneCard.style= "width: 18rem;"
-        
+        //cardbody
         const cardBody = document.createElement('div')
-        teamOneCard.append(cardBody)
+        
         //name
         const cardName = document.createElement('h5')
         cardName.innerHTML = e.name
         cardBody.append(cardName)
-        battlePokeOne.append(teamOneCard)
-        
+
         //img
         const image = document.createElement('img')     //Creates img from call
             image.src = e.img
-            cardBody.append(image)                //Renders created img to the DOM
-                                 //populates teamMember object to be posted to the database.
-        //abilities
-        pokemon.abilities.map(e => {
-            if(!e.is_hidden){
-                const ability1 = document.createElement('p')
-                ability1.innerHTML = "Ability: " + e.ability.name
-                cardBody.append(ability1)
-            }
-        })
-        //types
-        if(pokemon.types.length > 1){
-            const types = pokemon.types
-            types.map(e => { 
-                let types1 = document.createElement('p')
-                types1.innerHTML = "TYPES: "+ e.type.name
-                cardBody.append(types1)
-            })
-        }   
-        else { 
-            let type = document.createElement('p')
-                type.innerHTML = "TYPE: "+ pokemon.types[0].type.name
-                cardBody.append(type)
-            }
-        //height
-        const height = document.createElement('p')
-              height.innerHTML = "HEIGHT: " + pokemon.height
-              cardBody.append(height)
+            cardBody.append(image)                //Renders created img to 
 
-        //weight
-        const weight = document.createElement('p')
-              weight.innerHTML = "WEIGHT: " + pokemon.weight
-              cardBody.append(weight)
-           //stats
-        const cardStats = document.createElement("div")
-        cardStats.setAttribute("class", "cardStats")
-            const pokemonStats = pokemon.stats; //length = 6
-            let TMstats = teamMember.stats //empty
-                pokemonStats.map(e => {
-                        let stat = document.createElement('p')
-                        stat.innerHTML = e.stat.name + " : " + e.base_stat + " "
-                        cardStats.append(stat)
-                        //func to push stat name and stat num 
-                        var getProperty = function (propertyName, propertyValue) {
-                            return TMstats[propertyName] = propertyValue;
-                        };
-                        getProperty(e.stat.name, e.base_stat);
-                })
-            teamOneCard.append(cardStats)
-            })
+        teamOneCard.append(cardBody);
+        battlePokeOne.append(teamOneCard)
         
-        // function getRandomInt(max) {
-        //     return Math.floor(Math.random() * max);
-        //   }
-        // //  moves
-        // const cardMoves = document.createElement("div")
-        // const moveTitle = document.createElement("p")
-        // moveTitle.innerHTML = "MOVES:"
-        // cardMoves.setAttribute('class', "cardMoves")
-        // cardMoves.append(moveTitle)
+    })
 
-        console.log(e, "data map")
-        //name
-        const name3 = document.createElement('span')
-        name3.innerHTML = e.name
-        battlePokeOne.append(name3)
-
-        //img
-        const image1 = document.createElement('img')
-        image1.src = e.img
-        battlePokeOne.append(image1)       
-    }
-
-
-
-
-
-
-
+}
 
 function renderTeamTwoParticipants(data){
     console.log("Clicked Team Participants!!")
    data.map(e => {
-        console.log(e, "data map")
+        //team 1 card
+        const teamTwoCard = document.createElement('div')
+        teamTwoCard.setAttribute("class", "card2")
+        teamTwoCard.style= "width: 18rem;"
+        //cardbody
+        const cardBody = document.createElement('div')
+        
         //name
-        const name2 = document.createElement('span')
-        name2.innerHTML = e.name
-        battlePokeTwo.append(name2)
+        const cardName = document.createElement('h5')
+        cardName.innerHTML = e.name
+        cardBody.append(cardName)
 
         //img
-        const image2 = document.createElement('img')
-        image2.src = e.img
-        battlePokeTwo.append(image2) 
-})
+        const image = document.createElement('img')     //Creates img from call
+            image.src = e.img
+            cardBody.append(image)                //Renders created img to 
+
+        teamTwoCard.append(cardBody);
+        battlePokeTwo.append(teamTwoCard)
+    })
 } 
 
 function battle(){

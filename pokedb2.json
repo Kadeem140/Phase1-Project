@@ -24,6 +24,31 @@
         "speed": 130
       },
       "pokedb.jsonId": 1
+    },
+    {
+      "id": 2,
+      "name": "mew",
+      "abilities": "Ability: synchronize",
+      "types": "TYPE: psychic",
+      "height": "HEIGHT: 4",
+      "weight": "WEIGHT: 40",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+      "moves": [
+        "silver-wind",
+        "focus-energy",
+        "close-combat",
+        "night-shade",
+        "smart-strike"
+      ],
+      "stats": {
+        "hp": 100,
+        "attack": 100,
+        "defense": 100,
+        "special-attack": 100,
+        "special-defense": 100,
+        "speed": 100
+      },
+      "pokedb.jsonId": 1
     }
   ]
 }

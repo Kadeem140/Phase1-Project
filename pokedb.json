@@ -90,6 +90,31 @@
         "speed": 100
       },
       "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 4,
+      "name": "charmander",
+      "abilities": "Ability: blaze",
+      "types": "TYPE: fire",
+      "height": "HEIGHT: 6",
+      "weight": "WEIGHT: 85",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "moves": [
+        "toxic",
+        "dragon-rush",
+        "flame-charge",
+        "overheat",
+        "dynamic-punch"
+      ],
+      "stats": {
+        "hp": 39,
+        "attack": 52,
+        "defense": 43,
+        "special-attack": 60,
+        "special-defense": 50,
+        "speed": 65
+      },
+      "pokedb.jsonId": "pokemon"
     }
   ]
 }

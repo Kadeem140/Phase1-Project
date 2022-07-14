@@ -2,8 +2,18 @@
 div.card {
   text-align: center;
   padding-bottom: 25px;
+  
 }
-
+div.card1 {
+    text-align: center;
+    padding-bottom: 25px;
+    background: yellow;
+}
+div.card2 {
+    text-align: center;
+    padding-bottom: 25px;
+    background: orange;
+}
 div.pokemonOptions {
     display: flex;
     justify-content: space-between;
