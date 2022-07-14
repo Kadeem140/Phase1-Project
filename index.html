@@ -24,57 +24,45 @@
     </section>
 
     <div class ="container-md" id ="search-by">
-        <h3>Search by: </h2>
+        <h3>Search by Name: </h2>
         <p>You and a Friend can search through the First Generation of Pokemon to look for partners you may
             want to add to your team for Battle..
         </p>
         <p>Filter your search options by Pokemon Name </p>
        
-        <button id="btn-name" value="name" class = "btn btn-success" onClick= toggleBtnSearch() >Pokemon Name</button>
+        <button id="btn-name" value="name" class = "btn btn-success" onClick=toggleBtnSearch()>
+            Pokemon Name
+        </button>
 
         <div id="datalist-container"  class="hide" hidden = true>
             <form class = "pure-form">
                Enter Name: <input type ="input" class='names' placeholder="Input a Pokemon`s name" />
                 <button type = "submit">Submit!</button>
-                <button type = "submit" onclick=fourMoves()> New Moves! </button>
-                   
                 <button value = "close2" onClick= toggleBtnSearch() > X </button>
             </form>
         </div>
-        <!-- //On click, hidden = "false",  -->
     </div>
 
     <div class ="container-md" id="pokmeon-search">
         <h2>Add a Pokemon to your Team: </h2>
-        <div id="dropdown-container" class="hide" hidden = "true">
-            <h3>Select a Pokemon by Type: </h3> <button value = "close" onClick= toggleBtnSearch() >X</button>
-            <select name="types" id="narrowedDD" class="drop-down">
-                <option>Types</option>
-                <option>Water</option>
-                <option>Fire</option>
-                <option>Ground</option>
-                <option>Grass</option>
-                <option>Flying</option>
-                <option>Fighting</option>
-                <option>Electric</option>
-                <option>Rock</option>
-                <option>Steel</option>
-                <option>Normal</option>
-                <option>Ghost</option>
-                <option>Psychic</option>
-                <option>Dark</option>
-                <option>Fairy</option>
-                <option>Bug</option>
-                <option>Ice</option>
-                <option>Posion</option>
-                <option>Dragon</option>
-            </select>
-        </div>
-
         <button onclick = revealBattleBox() >ARE YOU READY TO BATTLE?</button> 
     </div>
 
-    <div class ="battle-box" hidden = true>
+    <div class="pokemonOptions">
+
+        <section id="team1" hidden = "true"> 
+
+        </section>
+        
+        
+        <section id="team-2" hidden = "true">
+            <!-- <datalist id="names"></datalist>  -->
+           
+            <!-- //API call that renders all pokemon needed data to a card? -->
+        </section>
+    </div>
+
+    <div class ="battleBox" hidden = true>
         <section id="participants-1">
                     <h2>TEAM ONE</h2>
         </section>
@@ -85,31 +73,16 @@
         <button onclick= battle() > BATTLE!! </button>
         <button value = "close3" onclick= hideBattleBox()>X</button>
     </div>
-
-    <div class="pokemonOptions">
-        <!-- <button class="add-team">Add to your team</button> -->
-        <section id="team-1" hidden = "true"> 
-            <!-- <datalist id="names"></datalist>  -->
-            <!-- //API call that renders all pokemon needed data to a card? -->
-        </section>
-        
-        
-        <section id="team-2" hidden = "true">
-            <!-- <datalist id="names"></datalist>  -->
-           
-            <!-- //API call that renders all pokemon needed data to a card? -->
-        </section>
-        
-    </div class="revealTeams">
+    
+    <div class="revealTeams">
         <button id="team-1-btn" onclick= revealTeam()> Reveal team 1 </button>
         <button onclick= hideTeam()>X</button>
 
         <button id="team-2-btn" onclick= revealTeamTwo()> Reveal team 2 </button>
         <button onclick= hideTeamTwo()>X</button>
 
-    <div>
-
     </div>
+    
     <script src="index.js" ></script>
 
     </main>

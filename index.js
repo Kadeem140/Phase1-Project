@@ -6,8 +6,6 @@ let dataInput;
 let dataList;
 let dropDown;
 
-
-
 //Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
     //once the content loads i want the event listeners to add to their respective element.
@@ -19,9 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     searchForm = document.querySelector('form.pure-form')
     teamOneButton = document.querySelector('#team-1-btn')
     teamTwoButton = document.querySelector('#team-2-btn')
-    teamOneSection = document.querySelector('#team-1')
+    teamOneSection = document.querySelector('#team1')
     teamTwoSection = document.querySelector('#team-2')
-    battleBox = document.querySelector('.battle-box')
+    battleBox = document.querySelector('.battleBox')
     battlePokeOne = document.querySelector('#participants-1')
     battlePokeTwo = document.querySelector('#participants-2')
     pokemonOptions = document.querySelector(".pokemonOptions")
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //initial render, testing... it works
    
 })
-// fetchPokemon("charmander")
 
 //button reveals for Teams
 function revealTeam(){
@@ -82,61 +79,60 @@ function revealTeamTwo(){
       });
 
 }
-//Add favorites button to this.
 function renderTeamOnePokemon(data){
         data.map(e => {
+             //team 1 card
+            const teamOneCard = document.createElement('div')
+            teamOneCard.setAttribute("class", "card")
+            teamOneCard.style= "width: 18rem;"
+
+            const cardBody = document.createElement('div')
+
             //name
             const name1 = document.createElement('span')
             name1.innerHTML = e.name
-            teamOneSection.append(name1)
+            cardBody.append(name1)
         
             //img
             const image1 = document.createElement('img')
             image1.src = e.img
-            teamOneSection.append(image1) 
-        
-            console.log(e, "E")
-        
+            cardBody.append(image1) 
+            //ability
             const ability1 = document.createElement('p')
             ability1.innerHTML = e.abilities
-            teamOneSection.append(ability1)
+            cardBody.append(ability1)
             //types
-            const types = e.types
-            // types.map(e => { 
-            //     let types = document.createElement('p')
-            //     types.innerHTML = e.type.name
-            //     teamOneSection.append(types)
-            //     //populates teamMember object to be posted to the database.
-            //     teamMember.types = types.innerHTML
-            // })
             let type1 = document.createElement('p')
                 type1.innerHTML = "TYPES: " + e.types
-                teamOneSection.append(type1)
+                cardBody.append(type1)
             //height
             const height1 = document.createElement('p')
                 height1.innerHTML = "HEIGHT: " + e.height
-                teamOneSection.append(height1)
+                cardBody.append(height1)
             //weight
             const weight1 = document.createElement('p')
                 weight1.innerHTML = "WEIGHT: " + e.weight
-                teamOneSection.append(weight1)
-        
-            const newBtn = document.createElement('button')
-                newBtn.innerHTML = "Remove from Team"
-                console.log(e.id, "ID")
-                // newBtn.addEventListener("click", removeFromTeamOne(e.name))
-                teamOneSection.append(newBtn)
-                newBtn.addEventListener("click", function (event) {
+                cardBody.append(weight1)
+            //remove from team button
+            const removeBtn = document.createElement('button')
+                removeBtn.innerHTML = "Remove from Team"
+                cardBody.append(removeBtn)
+                removeBtn.addEventListener("click", function (event) {
                     event.preventDefault();
                     removeFromTeamOne(e.id)
                 }, { once: true })
             
-            //stats   
+            //stats
+            const teamOneStats = document.createElement('div')
+            teamOneStats.setAttribute('class', "teamOneStats")
+
             for (const key of Object.keys(e.stats)) {
-                // teamOneSection.append(key)
-                console.log(key, "Keys test")
-                teamOneSection.append(key.toUpperCase() + " : " + e.stats[key] + " ")
+                
+               teamOneStats.append(key.toUpperCase() + " : " + e.stats[key] + " ")
             }
+            cardBody.append(teamOneStats)
+            teamOneCard.append(cardBody)
+            teamOneSection.append(teamOneCard)
     })
 } 
 //Add favorites button to this.
@@ -548,6 +544,83 @@ function renderTeamOneParticipants(data){
     console.log("Clicked Team Participants!!")
     // Why is this not working??
     data.map(e => {
+        //team 1 card
+        const teamOneCard = document.createElement('div')
+        teamOneCard.setAttribute("class", "card")
+        teamOneCard.style= "width: 18rem;"
+        
+        const cardBody = document.createElement('div')
+        teamOneCard.append(cardBody)
+        //name
+        const cardName = document.createElement('h5')
+        cardName.innerHTML = e.name
+        cardBody.append(cardName)
+        battlePokeOne.append(teamOneCard)
+        
+        //img
+        const image = document.createElement('img')     //Creates img from call
+            image.src = e.img
+            cardBody.append(image)                //Renders created img to the DOM
+                                 //populates teamMember object to be posted to the database.
+        //abilities
+        pokemon.abilities.map(e => {
+            if(!e.is_hidden){
+                const ability1 = document.createElement('p')
+                ability1.innerHTML = "Ability: " + e.ability.name
+                cardBody.append(ability1)
+            }
+        })
+        //types
+        if(pokemon.types.length > 1){
+            const types = pokemon.types
+            types.map(e => { 
+                let types1 = document.createElement('p')
+                types1.innerHTML = "TYPES: "+ e.type.name
+                cardBody.append(types1)
+            })
+        }   
+        else { 
+            let type = document.createElement('p')
+                type.innerHTML = "TYPE: "+ pokemon.types[0].type.name
+                cardBody.append(type)
+            }
+        //height
+        const height = document.createElement('p')
+              height.innerHTML = "HEIGHT: " + pokemon.height
+              cardBody.append(height)
+
+        //weight
+        const weight = document.createElement('p')
+              weight.innerHTML = "WEIGHT: " + pokemon.weight
+              cardBody.append(weight)
+           //stats
+        const cardStats = document.createElement("div")
+        cardStats.setAttribute("class", "cardStats")
+            const pokemonStats = pokemon.stats; //length = 6
+            let TMstats = teamMember.stats //empty
+                pokemonStats.map(e => {
+                        let stat = document.createElement('p')
+                        stat.innerHTML = e.stat.name + " : " + e.base_stat + " "
+                        cardStats.append(stat)
+                        //func to push stat name and stat num 
+                        var getProperty = function (propertyName, propertyValue) {
+                            return TMstats[propertyName] = propertyValue;
+                        };
+                        getProperty(e.stat.name, e.base_stat);
+                })
+            teamOneCard.append(cardStats)
+            })
+        
+        // function getRandomInt(max) {
+        //     return Math.floor(Math.random() * max);
+        //   }
+        // //  moves
+        // const cardMoves = document.createElement("div")
+        // const moveTitle = document.createElement("p")
+        // moveTitle.innerHTML = "MOVES:"
+        // cardMoves.setAttribute('class', "cardMoves")
+        // cardMoves.append(moveTitle)
+
         console.log(e, "data map")
         //name
         const name3 = document.createElement('span')
@@ -558,8 +631,13 @@ function renderTeamOneParticipants(data){
         const image1 = document.createElement('img')
         image1.src = e.img
         battlePokeOne.append(image1)       
-    })
-} 
+    }
+
+
+
+
+
+
 
 
 function renderTeamTwoParticipants(data){
@@ -643,5 +721,3 @@ function sumOfStats(data){
     return statSum
 }
 
-
-//use card tmeplate for the Battle box

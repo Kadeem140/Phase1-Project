@@ -11,6 +11,18 @@ div.pokemonOptions {
     padding: 20px 50px 25px 50px;
   }
 
+#team1 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 50px 25px 50px;
+}
+
+div.teamOneStats {
+    display: flex;
+    flex-direction: column
+}
+
 div.cardButtons {
     display: flex;
     justify-content: space-around;
@@ -27,5 +39,12 @@ div.cardMoves {
 
 div.revealTeams {
     display: flex;
-    align-items: center;
+    padding-left: 55px;
+}
+
+div.battleBox {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 50px;
+
 }

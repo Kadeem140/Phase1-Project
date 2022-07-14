@@ -2,43 +2,18 @@
   "pokemon": [
     {
       "id": 1,
-      "name": "mew",
-      "abilities": "synchronize",
-      "types": "psychic",
-      "height": "HEIGHT: 4",
-      "weight": "WEIGHT: 40",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
-      "moves": [
-        "hyper-beam",
-        "future-sight",
-        "gunk-shot",
-        "brave-bird",
-        "confide"
-      ],
-      "stats": {
-        "hp": 100,
-        "attack": 100,
-        "defense": 100,
-        "special-attack": 100,
-        "special-defense": 100,
-        "speed": 100
-      },
-      "pokedb.jsonId": 1
-    },
-    {
-      "id": 2,
-      "name": "mewtwo",
-      "abilities": "pressure",
-      "types": "psychic",
+      "name": "",
+      "abilities": "Ability: pressure",
+      "types": "TYPE: psychic",
       "height": "HEIGHT: 20",
       "weight": "WEIGHT: 1220",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
       "moves": [
-        "solar-beam",
-        "confide",
-        "secret-power",
-        "recover",
-        "psywave"
+        "round",
+        "low-sweep",
+        "substitute",
+        "power-up-punch",
+        "signal-beam"
       ],
       "stats": {
         "hp": 106,
@@ -47,31 +22,6 @@
         "special-attack": 154,
         "special-defense": 90,
         "speed": 130
-      },
-      "pokedb.jsonId": 1
-    },
-    {
-      "id": 3,
-      "name": "blastoise",
-      "abilities": "torrent",
-      "types": "water",
-      "height": "HEIGHT: 16",
-      "weight": "WEIGHT: 855",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
-      "moves": [
-        "helping-hand",
-        "rest",
-        "blizzard",
-        "rollout",
-        "water-gun"
-      ],
-      "stats": {
-        "hp": 79,
-        "attack": 83,
-        "defense": 100,
-        "special-attack": 85,
-        "special-defense": 105,
-        "speed": 78
       },
       "pokedb.jsonId": 1
     }
