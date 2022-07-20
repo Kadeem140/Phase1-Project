@@ -24,6 +24,15 @@ div.pokemonOptions {
 #team1 {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px 50px 25px 50px;
+}
+
+#team2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     flex-wrap: wrap;
     padding: 20px 50px 25px 50px;
 }
@@ -56,5 +65,8 @@ div.battleBox {
     display: flex;
     flex-wrap: wrap;
     padding-left: 50px;
-
+}
+section#battleButton{
+    display: flex;
+    flex-direction: column;
 }

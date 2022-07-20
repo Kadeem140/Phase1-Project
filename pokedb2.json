@@ -2,18 +2,49 @@
   "pokemon": [
     {
       "id": 1,
-      "name": "",
+      "name": "blastoise",
+      "abilities": "Ability: torrent",
+      "types": "TYPE: water",
+      "height": "HEIGHT: 16",
+      "weight": "WEIGHT: 855",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+      "moves": [
+        "flash-cannon",
+        "giga-impact",
+        "hyper-beam",
+        "water-gun",
+        "endure"
+      ],
+      "stats": {
+        "hp": 79,
+        "attack": 83,
+        "defense": 100,
+        "special-attack": 85,
+        "special-defense": 105,
+        "speed": 78
+      },
+      "pokedb.jsonId": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4,
+      "name": "mewtwo",
       "abilities": "Ability: pressure",
       "types": "TYPE: psychic",
       "height": "HEIGHT: 20",
       "weight": "WEIGHT: 1220",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
       "moves": [
-        "round",
-        "low-sweep",
-        "substitute",
-        "power-up-punch",
-        "signal-beam"
+        "body-slam",
+        "disable",
+        "fling",
+        "disable",
+        "future-sight"
       ],
       "stats": {
         "hp": 106,
@@ -26,27 +57,108 @@
       "pokedb.jsonId": 1
     },
     {
-      "id": 2,
-      "name": "mew",
-      "abilities": "Ability: synchronize",
-      "types": "TYPE: psychic",
-      "height": "HEIGHT: 4",
-      "weight": "WEIGHT: 40",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+      "id": 5,
+      "name": "moltres",
+      "abilities": "Ability: pressure",
+      "types": "TYPES: flying",
+      "height": "HEIGHT: 20",
+      "weight": "WEIGHT: 600",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
       "moves": [
-        "silver-wind",
-        "focus-energy",
-        "close-combat",
-        "night-shade",
-        "smart-strike"
+        "safeguard",
+        "steel-wing",
+        "substitute",
+        "detect",
+        "bide"
       ],
       "stats": {
-        "hp": 100,
+        "hp": 90,
         "attack": 100,
+        "defense": 90,
+        "special-attack": 125,
+        "special-defense": 85,
+        "speed": 90
+      },
+      "pokedb.jsonId": 1
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8,
+      "name": "pinsir",
+      "abilities": "Ability: mold-breaker",
+      "types": "TYPE: bug",
+      "height": "HEIGHT: 15",
+      "weight": "WEIGHT: 550",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png",
+      "moves": [
+        "thief",
+        "swords-dance",
+        "submission",
+        "rock-slide",
+        "guillotine"
+      ],
+      "stats": {
+        "hp": 65,
+        "attack": 125,
         "defense": 100,
-        "special-attack": 100,
-        "special-defense": 100,
-        "speed": 100
+        "special-attack": 55,
+        "special-defense": 70,
+        "speed": 85
+      },
+      "pokedb.jsonId": 1
+    },
+    {
+      "id": 9,
+      "name": "beedrill",
+      "abilities": "Ability: swarm",
+      "types": "TYPES: poison",
+      "height": "HEIGHT: 10",
+      "weight": "WEIGHT: 295",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png",
+      "moves": [
+        "hidden-power",
+        "mega-drain",
+        "attract",
+        "payback",
+        "drill-run"
+      ],
+      "stats": {
+        "hp": 65,
+        "attack": 90,
+        "defense": 40,
+        "special-attack": 45,
+        "special-defense": 80,
+        "speed": 75
+      },
+      "pokedb.jsonId": 1
+    },
+    {
+      "id": 10,
+      "name": "goldeen",
+      "abilities": "Ability: water-veil",
+      "types": "TYPE: water",
+      "height": "HEIGHT: 6",
+      "weight": "WEIGHT: 150",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png",
+      "moves": [
+        "return",
+        "mud-shot",
+        "curse",
+        "knock-off",
+        "mimic"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 67,
+        "defense": 60,
+        "special-attack": 35,
+        "special-defense": 50,
+        "speed": 63
       },
       "pokedb.jsonId": 1
     }

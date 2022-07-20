@@ -81,7 +81,8 @@ function revealTeamTwo(){
 }
 function renderTeamOnePokemon(data){
         data.map(e => {
-             //team 1 card
+            if(e.name){
+                 //team 1 card
             const teamOneCard = document.createElement('div')
             teamOneCard.setAttribute("class", "card1")
             teamOneCard.style= "width: 18rem;"
@@ -132,67 +133,69 @@ function renderTeamOnePokemon(data){
             cardBody.append(teamOneStats)
             teamOneCard.append(cardBody)
             teamOneSection.append(teamOneCard)
+            }
+            
     })
 } 
 //Add favorites button to this.
 function renderTeamTwoPokemon(data){
     data.map(e => {
-        //team 2 card
-        const teamTwoCard = document.createElement('div')
-        teamTwoCard.setAttribute("class", "card2")
-        teamTwoCard.style= "width: 18rem;"
-
-        const cardBody = document.createElement('div')
-
-        //name
-        const name2 = document.createElement('span')
-        name2.innerHTML = e.name
-        cardBody.append(name2)
+        if(e.name){//team 2 card
+            const teamTwoCard = document.createElement('div')
+            teamTwoCard.setAttribute("class", "card2")
+            teamTwoCard.style= "width: 18rem;"
     
-        //img
-        const image2 = document.createElement('img')
-        image2.src = e.img
-        cardBody.append(image2) 
+            const cardBody = document.createElement('div')
     
-        console.log(e, "E")
-    
-        const ability2 = document.createElement('p')
-        ability2.innerHTML = e.abilities
-        cardBody.append(ability2)
-        //types
-        const types = e.types
-       
-        let type2 = document.createElement('p')
-            type2.innerHTML = "TYPES: " + e.types
-            cardBody.append(type2)
-        //height
-        const height2 = document.createElement('p')
-            height2.innerHTML = "HEIGHT: " + e.height
-            cardBody.append(height2)
-        //weight
-        const weight2 = document.createElement('p')
-            weight2.innerHTML = "WEIGHT: " + e.weight
-            cardBody.append(weight2)
-    
-        const newBtn2 = document.createElement('button')
-            newBtn2.innerHTML = "Remove from Team"
-            console.log(e.id, "ID")
-            // newBtn2.addEventListener("click", removeFromTeamOne(e.name))
-            cardBody.append(newBtn2)
-            newBtn2.addEventListener("click", function (event) {
-                event.preventDefault();
-                // removeFromTeamOne(e.id)
-            }, { once: true })
-          
-        //stats   
-        const teamTwoStats = document.createElement('div')
-        teamTwoStats.setAttribute('class', "teamTwoStats")
-        for (const key of Object.keys(e.stats)) {
-            teamTwoStats.append(key.toUpperCase() + " : " + e.stats[key] + " ")
-        }
-        cardBody.append(teamTwoStats)
-        teamTwoCard.append(cardBody)
-        teamTwoSection.append(teamTwoCard)
+            //name
+            const name2 = document.createElement('span')
+            name2.innerHTML = e.name
+            cardBody.append(name2)
+        
+            //img
+            const image2 = document.createElement('img')
+            image2.src = e.img
+            cardBody.append(image2) 
+        
+            console.log(e, "E")
+        
+            const ability2 = document.createElement('p')
+            ability2.innerHTML = e.abilities
+            cardBody.append(ability2)
+            //types
+            const types = e.types
+           
+            let type2 = document.createElement('p')
+                type2.innerHTML = "TYPES: " + e.types
+                cardBody.append(type2)
+            //height
+            const height2 = document.createElement('p')
+                height2.innerHTML = "HEIGHT: " + e.height
+                cardBody.append(height2)
+            //weight
+            const weight2 = document.createElement('p')
+                weight2.innerHTML = "WEIGHT: " + e.weight
+                cardBody.append(weight2)
+        
+            const newBtn2 = document.createElement('button')
+                newBtn2.innerHTML = "Remove from Team"
+                console.log(e.id, "ID")
+                // newBtn2.addEventListener("click", removeFromTeamOne(e.name))
+                cardBody.append(newBtn2)
+                newBtn2.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    removeFromTeamTwo(e.id)
+                }, { once: true })
+              
+            //stats   
+            const teamTwoStats = document.createElement('div')
+            teamTwoStats.setAttribute('class', "teamTwoStats")
+            for (const key of Object.keys(e.stats)) {
+                teamTwoStats.append(key.toUpperCase() + " : " + e.stats[key] + " ")
+            }
+            cardBody.append(teamTwoStats)
+            teamTwoCard.append(cardBody)
+            teamTwoSection.append(teamTwoCard)}
     })
 }
 
@@ -205,13 +208,34 @@ function removeFromTeamOne(pokemon){
          }
      })
      .then(response => response.json())
-     .then(res => console.log(res))
-
+     .then((res) =>{
+         delete res.id.value
+         console.log(res)
+        })
+     
      .catch((err) => {
          console.log("Error:", err)
      })
 }
+
 //Write remove from Team 2,
+function removeFromTeamTwo(pokemon){
+    fetch(`http://localhost:3001/pokemon/${pokemon}`, {
+       method: 'PUT',
+       headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then((res) =>{
+        delete res.id.value
+        console.log(res)
+       })
+    
+    .catch((err) => {
+        console.log("Error:", err)
+    })
+}
 
 function toggleBtnSearch(){
     // console.log(event.target.value, "event object")
@@ -297,7 +321,7 @@ function fetchPokemon(name){
         cardBody.append(cardName)
         teamMember.name = pokemon.name
         pokemonOptions.append(card)
-        
+
         //img
         const image = document.createElement('img')     //Creates img from call
             image.src = pokemon.sprites.front_default
@@ -501,25 +525,29 @@ function renderTeamOneParticipants(data){
     console.log("Clicked Team Participants!!")
     // Why is this not working??
     data.map(e => {
-        //team 1 card
-        const teamOneCard = document.createElement('div')
-        teamOneCard.setAttribute("class", "card1")
-        teamOneCard.style= "width: 18rem;"
-        //cardbody
-        const cardBody = document.createElement('div')
-        
-        //name
-        const cardName = document.createElement('h5')
-        cardName.innerHTML = e.name
-        cardBody.append(cardName)
 
-        //img
-        const image = document.createElement('img')     //Creates img from call
-            image.src = e.img
-            cardBody.append(image)                //Renders created img to 
+        if(e.name){
 
-        teamOneCard.append(cardBody);
-        battlePokeOne.append(teamOneCard)
+            //team 1 card
+            const teamOneCard = document.createElement('div')
+            teamOneCard.setAttribute("class", "card1")
+            teamOneCard.style= "width: 18rem;"
+            //cardbody
+            const cardBody = document.createElement('div')
+            
+            //name
+            const cardName = document.createElement('h5')
+            cardName.innerHTML = e.name
+            cardBody.append(cardName)
+    
+            //img
+            const image = document.createElement('img')     //Creates img from call
+                image.src = e.img
+                cardBody.append(image)                //Renders created img to 
+    
+            teamOneCard.append(cardBody);
+            battlePokeOne.append(teamOneCard)
+        }
         
     })
 
@@ -528,7 +556,8 @@ function renderTeamOneParticipants(data){
 function renderTeamTwoParticipants(data){
     console.log("Clicked Team Participants!!")
    data.map(e => {
-        //team 1 card
+       if(e.name){
+        //team 2 card
         const teamTwoCard = document.createElement('div')
         teamTwoCard.setAttribute("class", "card2")
         teamTwoCard.style= "width: 18rem;"
@@ -547,6 +576,7 @@ function renderTeamTwoParticipants(data){
 
         teamTwoCard.append(cardBody);
         battlePokeTwo.append(teamTwoCard)
+       }
     })
 } 
 

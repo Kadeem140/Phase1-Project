@@ -2,84 +2,43 @@
   "pokemon": [
     {
       "id": 1,
-      "name": "",
-      "abilities": "Ability: synchronize",
-      "types": "TYPE: psychic",
-      "height": "HEIGHT: 4",
-      "weight": "WEIGHT: 40",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+      "name": "charizard",
+      "abilities": "Ability: blaze",
+      "types": "TYPES: flying",
+      "height": "HEIGHT: 17",
+      "weight": "WEIGHT: 905",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
       "moves": [
-        "focus-punch",
-        "dragon-claw",
-        "power-up-punch",
-        "megahorn",
-        "steel-wing"
+        "fling",
+        "facade",
+        "rest",
+        "rage",
+        "roar"
       ],
       "stats": {
-        "hp": 100,
-        "attack": 100,
-        "defense": 100,
-        "special-attack": 100,
-        "special-defense": 100,
+        "hp": 78,
+        "attack": 84,
+        "defense": 78,
+        "special-attack": 109,
+        "special-defense": 85,
         "speed": 100
       },
       "pokedb.jsonId": "pokemon"
     },
     {
       "id": 2,
-      "name": "",
-      "abilities": "Ability: blaze",
-      "types": "TYPE: fire",
-      "height": "HEIGHT: 6",
-      "weight": "WEIGHT: 85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "moves": [
-        "leer",
-        "beat-up",
-        "false-swipe",
-        "outrage",
-        "dragon-pulse"
-      ],
-      "stats": {
-        "hp": 39,
-        "attack": 52,
-        "defense": 43,
-        "special-attack": 60,
-        "special-defense": 50,
-        "speed": 65
-      },
-      "pokedb.jsonId": "pokemon"
-    },
-    {
-      "id": 3,
-      "name": "",
+      "name": "mew",
       "abilities": "Ability: synchronize",
       "types": "TYPE: psychic",
       "height": "HEIGHT: 4",
       "weight": "WEIGHT: 40",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
       "moves": [
-        "power-swap",
-        "will-o-wisp",
-        "fly",
-        "poltergeist",
-        "dragon-pulse",
-        "soft-boiled",
-        "sludge-wave",
-        "pound",
-        "safeguard",
-        "ice-fang",
-        "echoed-voice",
-        "skill-swap",
-        "tailwind",
-        "super-fang",
-        "rollout",
-        "metronome",
-        "rock-smash",
-        "take-down",
-        "play-rough",
-        "fake-out",
-        "brine"
+        "last-resort",
+        "heal-bell",
+        "agility",
+        "knock-off",
+        "guard-swap"
       ],
       "stats": {
         "hp": 100,
@@ -92,27 +51,108 @@
       "pokedb.jsonId": "pokemon"
     },
     {
+      "id": 3
+    },
+    {
       "id": 4,
-      "name": "charmander",
-      "abilities": "Ability: blaze",
-      "types": "TYPE: fire",
-      "height": "HEIGHT: 6",
-      "weight": "WEIGHT: 85",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "name": "bulbasaur",
+      "abilities": "Ability: overgrow",
+      "types": "TYPES: poison",
+      "height": "HEIGHT: 7",
+      "weight": "WEIGHT: 69",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
       "moves": [
-        "toxic",
-        "dragon-rush",
-        "flame-charge",
-        "overheat",
-        "dynamic-punch"
+        "seed-bomb",
+        "flash",
+        "skull-bash",
+        "magical-leaf",
+        "fury-cutter"
       ],
       "stats": {
-        "hp": 39,
-        "attack": 52,
-        "defense": 43,
-        "special-attack": 60,
-        "special-defense": 50,
-        "speed": 65
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "special-attack": 65,
+        "special-defense": 65,
+        "speed": 45
+      },
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6,
+      "name": "articuno",
+      "abilities": "Ability: pressure",
+      "types": "TYPES: flying",
+      "height": "HEIGHT: 17",
+      "weight": "WEIGHT: 554",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png",
+      "moves": [
+        "steel-wing",
+        "mist",
+        "facade",
+        "rest",
+        "rest"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 85,
+        "defense": 100,
+        "special-attack": 95,
+        "special-defense": 125,
+        "speed": 85
+      },
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 7,
+      "name": "rhydon",
+      "abilities": "Ability: rock-head",
+      "types": "TYPES: rock",
+      "height": "HEIGHT: 19",
+      "weight": "WEIGHT: 1200",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png",
+      "moves": [
+        "return",
+        "thunder",
+        "fire-punch",
+        "ice-fang",
+        "whirlpool"
+      ],
+      "stats": {
+        "hp": 105,
+        "attack": 130,
+        "defense": 120,
+        "special-attack": 45,
+        "special-defense": 45,
+        "speed": 40
+      },
+      "pokedb.jsonId": "pokemon"
+    },
+    {
+      "id": 8,
+      "name": "zapdos",
+      "abilities": "Ability: pressure",
+      "types": "TYPES: flying",
+      "height": "HEIGHT: 16",
+      "weight": "WEIGHT: 526",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png",
+      "moves": [
+        "zap-cannon",
+        "facade",
+        "detect",
+        "detect",
+        "return"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 90,
+        "defense": 85,
+        "special-attack": 125,
+        "special-defense": 90,
+        "speed": 100
       },
       "pokedb.jsonId": "pokemon"
     }
